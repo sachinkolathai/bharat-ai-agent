@@ -80,38 +80,40 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="logo-sub">Powered by Claude AI</div>
       </div>
     </div>
-    <span class="hbadge">🇮🇳 Made for India</span>
+    <span class="hbadge">Made for India</span>
   </div>
 </div>
 <div class="mode-bar">
   <div class="mode-inner">
-    <button class="mbtn active" onclick="switchMode('sme',this)">💼 SME / Business</button>
-    <button class="mbtn" onclick="switchMode('upsc',this)">📜 UPSC / IAS</button>
-    <button class="mbtn" onclick="switchMode('jee',this)">⚛️ JEE / NEET</button>
-    <button class="mbtn" onclick="switchMode('school',this)">📚 School / CBSE</button>
+    <button class="mbtn active" onclick="switchMode('sme',this)">SME / Business</button>
+    <button class="mbtn" onclick="switchMode('upsc',this)">UPSC / IAS</button>
+    <button class="mbtn" onclick="switchMode('jee',this)">JEE / NEET</button>
+    <button class="mbtn" onclick="switchMode('school',this)">School / CBSE</button>
   </div>
 </div>
 <div class="main">
+
 <div id="sme" class="sec show">
   <div class="agent-grid">
-    <div class="acard active" onclick="selAgent('sme','GST & Tax Helper','💰',this)"><span class="aemoji">💰</span><div class="aname">GST & Tax</div><div class="adesc">Filing, ITR, TDS</div></div>
+    <div class="acard active" onclick="selAgent('sme','GST and Tax Helper','💰',this)"><span class="aemoji">💰</span><div class="aname">GST &amp; Tax</div><div class="adesc">Filing, ITR, TDS</div></div>
     <div class="acard" onclick="selAgent('sme','Business Advisor','🏭',this)"><span class="aemoji">🏭</span><div class="aname">Business Advisor</div><div class="adesc">MSME, loans, schemes</div></div>
-    <div class="acard" onclick="selAgent('sme','Legal & Compliance','⚖️',this)"><span class="aemoji">⚖️</span><div class="aname">Legal & Compliance</div><div class="adesc">ROC, Shop Act, FSSAI</div></div>
+    <div class="acard" onclick="selAgent('sme','Legal and Compliance','⚖️',this)"><span class="aemoji">⚖️</span><div class="aname">Legal &amp; Compliance</div><div class="adesc">ROC, Shop Act, FSSAI</div></div>
     <div class="acard" onclick="selAgent('sme','Digital Marketing','📣',this)"><span class="aemoji">📣</span><div class="aname">Digital Marketing</div><div class="adesc">Social, ads, WhatsApp</div></div>
   </div>
   <div class="chat-card">
-    <div class="chat-top"><div class="dot"></div><span class="atitle" id="sme-title">💰 GST & Tax Helper</span><button class="ltoggle active" id="lang-sme" onclick="toggleLang('sme')">🇮🇳 Hinglish</button></div>
-    <div class="messages" id="chat-sme"><div class="msg bot"><div class="mav">🤖</div><div class="mbubble">Namaste! Main aapka <strong>GST & Tax Helper</strong> hoon. GST filing, ITR, TDS — koi bhi sawaal poochein Hindi ya English mein. 🙏</div></div></div>
+    <div class="chat-top"><div class="dot"></div><span class="atitle" id="sme-title">GST and Tax Helper</span><button class="ltoggle active" id="lang-sme" onclick="toggleLang('sme')">Hinglish</button></div>
+    <div class="messages" id="chat-sme"><div class="msg bot"><div class="mav">🤖</div><div class="mbubble">Namaste! Main aapka <strong>GST and Tax Helper</strong> hoon. GST filing, ITR, TDS — koi bhi sawaal poochein Hindi ya English mein.</div></div></div>
     <div class="qrow">
-      <button class="qp" onclick="qs('sme','GST return kaise file kare?')">GST return kaise file kare?</button>
-      <button class="qp" onclick="qs('sme','MSME loan kaise milega?')">MSME loan</button>
-      <button class="qp" onclick="qs('sme','Composition scheme kya hai?')">Composition scheme</button>
-      <button class="qp" onclick="qs('sme','GeM portal registration kaise kare?')">GeM portal</button>
+      <button class="qp" onclick="qs('sme','GST return kaise file kare')">GST return file kare</button>
+      <button class="qp" onclick="qs('sme','MSME loan kaise milega')">MSME loan</button>
+      <button class="qp" onclick="qs('sme','Composition scheme kya hai')">Composition scheme</button>
+      <button class="qp" onclick="qs('sme','GeM portal registration kaise kare')">GeM portal</button>
     </div>
     <div class="irow"><input class="cinput" id="inp-sme" placeholder="GST, tax, business sawaal..." onkeydown="if(event.key==='Enter')send('sme')"><button class="sbtn" onclick="send('sme')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
-    <p class="hint">Hindi · English · Hinglish — sab chalega</p>
+    <p class="hint">Hindi - English - Hinglish sab chalega</p>
   </div>
 </div>
+
 <div id="upsc" class="sec">
   <div class="agent-grid">
     <div class="acard active" onclick="selAgent('upsc','General Studies','📜',this)"><span class="aemoji">📜</span><div class="aname">General Studies</div><div class="adesc">Polity, Economy, GS1-4</div></div>
@@ -120,18 +122,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="acard" onclick="selAgent('upsc','Mock Quiz','🎯',this)"><span class="aemoji">🎯</span><div class="aname">Mock Quiz</div><div class="adesc">Prelims MCQ practice</div></div>
   </div>
   <div class="chat-card">
-    <div class="chat-top"><div class="dot"></div><span class="atitle" id="upsc-title">📜 General Studies</span><button class="ltoggle active" id="lang-upsc" onclick="toggleLang('upsc')">🇮🇳 Hinglish</button></div>
-    <div class="messages" id="chat-upsc"><div class="msg bot"><div class="mav">🎓</div><div class="mbubble">Welcome, future IAS officer! 🌟 Ask me about Polity, Economy, History, Geography — ya MCQs practice karo!</div></div></div>
+    <div class="chat-top"><div class="dot"></div><span class="atitle" id="upsc-title">General Studies</span><button class="ltoggle active" id="lang-upsc" onclick="toggleLang('upsc')">Hinglish</button></div>
+    <div class="messages" id="chat-upsc"><div class="msg bot"><div class="mav">🎓</div><div class="mbubble">Welcome, future IAS officer! Ask me about Polity, Economy, History, Geography — ya MCQs practice karo!</div></div></div>
     <div class="qrow">
       <button class="qp" onclick="qs('upsc','Explain DPSP vs Fundamental Rights')">DPSP vs FR</button>
       <button class="qp" onclick="qs('upsc','Give me 5 MCQs on Indian Economy for UPSC Prelims')">Economy MCQs</button>
-      <button class="qp" onclick="qs('upsc','Write a 200-word UPSC answer on climate change')">Answer writing</button>
+      <button class="qp" onclick="qs('upsc','Write a 200 word UPSC answer on climate change')">Answer writing</button>
       <button class="qp" onclick="qs('upsc','Important government schemes 2024 for UPSC')">Govt schemes</button>
     </div>
     <div class="irow"><input class="cinput" id="inp-upsc" placeholder="UPSC topic, concept, ya MCQ..." onkeydown="if(event.key==='Enter')send('upsc')"><button class="sbtn" onclick="send('upsc')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
     <p class="hint">Hindi medium aspirants bhi poochh sakte hain</p>
   </div>
 </div>
+
 <div id="jee" class="sec">
   <div class="agent-grid">
     <div class="acard active" onclick="selAgent('jee','Physics Tutor','⚛️',this)"><span class="aemoji">⚛️</span><div class="aname">Physics</div><div class="adesc">Mechanics, electrostatics</div></div>
@@ -140,113 +143,132 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="acard" onclick="selAgent('jee','Biology Tutor','🌿',this)"><span class="aemoji">🌿</span><div class="aname">Biology</div><div class="adesc">NEET-focused, NCERT</div></div>
   </div>
   <div class="chat-card">
-    <div class="chat-top"><div class="dot"></div><span class="atitle" id="jee-title">⚛️ Physics Tutor</span><button class="ltoggle active" id="lang-jee" onclick="toggleLang('jee')">🇮🇳 Hinglish</button></div>
-    <div class="messages" id="chat-jee"><div class="msg bot"><div class="mav">⚛️</div><div class="mbubble">Hello! Main aapka <strong>JEE/NEET Physics</strong> tutor hoon. Koi bhi numerical ya concept — step-by-step explain karunga! 🚀</div></div></div>
+    <div class="chat-top"><div class="dot"></div><span class="atitle" id="jee-title">Physics Tutor</span><button class="ltoggle active" id="lang-jee" onclick="toggleLang('jee')">Hinglish</button></div>
+    <div class="messages" id="chat-jee"><div class="msg bot"><div class="mav">⚛️</div><div class="mbubble">Hello! Main aapka JEE/NEET Physics tutor hoon. Koi bhi numerical ya concept — step-by-step explain karunga!</div></div></div>
     <div class="qrow">
       <button class="qp" onclick="qs('jee','Explain Kirchhoff laws with a solved example')">Kirchhoff laws</button>
-      <button class="qp" onclick="qs('jee','Ball thrown at 30m/s at 45 degrees, find range and max height')">Projectile problem</button>
+      <button class="qp" onclick="qs('jee','Ball thrown at 30ms at 45 degrees find range')">Projectile problem</button>
       <button class="qp" onclick="qs('jee','Most important chapters for JEE Mains Physics')">Important chapters</button>
       <button class="qp" onclick="qs('jee','Difference between JEE Mains and Advanced syllabus')">Mains vs Advanced</button>
     </div>
     <div class="irow"><input class="cinput" id="inp-jee" placeholder="Problem paste karo ya concept poochho..." onkeydown="if(event.key==='Enter')send('jee')"><button class="sbtn" onclick="send('jee')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
-    <p class="hint">Hindi ya English — dono mein explain karunga</p>
+    <p class="hint">Hindi ya English dono mein explain karunga</p>
   </div>
 </div>
+
 <div id="school" class="sec">
   <div class="agent-grid">
     <div class="acard active" onclick="selAgent('school','NCERT Doubt Solver','📚',this)"><span class="aemoji">📚</span><div class="aname">NCERT Doubts</div><div class="adesc">Any chapter, class 6-12</div></div>
     <div class="acard" onclick="selAgent('school','Board Exam Prep','🎓',this)"><span class="aemoji">🎓</span><div class="aname">Board Exam Prep</div><div class="adesc">Important Qs, patterns</div></div>
     <div class="acard" onclick="selAgent('school','Career Guidance','🗺️',this)"><span class="aemoji">🗺️</span><div class="aname">Career Guidance</div><div class="adesc">After 10th and 12th</div></div>
-    <div class="acard" onclick="selAgent('school','Essay Writing','✒️',this)"><span class="aemoji">✒️</span><div class="aname">Essay & Writing</div><div class="adesc">Hindi nibandh, letters</div></div>
+    <div class="acard" onclick="selAgent('school','Essay Writing','✒️',this)"><span class="aemoji">✒️</span><div class="aname">Essay and Writing</div><div class="adesc">Hindi nibandh, letters</div></div>
   </div>
   <div class="chat-card">
-    <div class="chat-top"><div class="dot"></div><span class="atitle" id="school-title">📚 NCERT Doubt Solver</span><button class="ltoggle active" id="lang-school" onclick="toggleLang('school')">🇮🇳 Hinglish</button></div>
-    <div class="messages" id="chat-school"><div class="msg bot"><div class="mav">📚</div><div class="mbubble">Hi! Main tumhara <strong>NCERT Doubt Solver</strong> hoon. Class 6 se 12 tak koi bhi sawaal poochho! 😊</div></div></div>
+    <div class="chat-top"><div class="dot"></div><span class="atitle" id="school-title">NCERT Doubt Solver</span><button class="ltoggle active" id="lang-school" onclick="toggleLang('school')">Hinglish</button></div>
+    <div class="messages" id="chat-school"><div class="msg bot"><div class="mav">📚</div><div class="mbubble">Hi! Main tumhara NCERT Doubt Solver hoon. Class 6 se 12 tak koi bhi sawaal poochho — aasan bhasha mein samjhaunga!</div></div></div>
     <div class="qrow">
       <button class="qp" onclick="qs('school','Explain photosynthesis class 10 in simple words')">Photosynthesis</button>
       <button class="qp" onclick="qs('school','French Revolution class 9 summary')">French Revolution</button>
-      <button class="qp" onclick="qs('school','Which stream should I choose after 10th for engineering?')">Stream after 10th</button>
+      <button class="qp" onclick="qs('school','Which stream to choose after 10th for engineering')">Stream after 10th</button>
       <button class="qp" onclick="qs('school','Write a Hindi essay on Swachh Bharat Abhiyan')">Hindi Nibandh</button>
     </div>
     <div class="irow"><input class="cinput" id="inp-school" placeholder="Class aur chapter batao..." onkeydown="if(event.key==='Enter')send('school')"><button class="sbtn" onclick="send('school')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
     <p class="hint">Hindi mein poochho — Hindi mein jawab milega</p>
   </div>
 </div>
+
 </div>
-<div class="footer">Built with ❤️ for India &nbsp;·&nbsp; Powered by Claude AI &nbsp;·&nbsp; <a href="https://wa.me/91XXXXXXXXXX">WhatsApp Support</a></div>
+<div class="footer">Built with love for India &nbsp;·&nbsp; Powered by Claude AI &nbsp;·&nbsp; <a href="https://wa.me/91XXXXXXXXXX">WhatsApp Support</a></div>
+
 <script>
-const S={
-  sme:{agent:'GST & Tax Helper',icon:'💰',lang:true,history:[]},
-  upsc:{agent:'General Studies',icon:'📜',lang:true,history:[]},
-  jee:{agent:'Physics Tutor',icon:'⚛️',lang:true,history:[]},
-  school:{agent:'NCERT Doubt Solver',icon:'📚',lang:true,history:[]}
+var S = {
+  sme:    {agent:'GST and Tax Helper', icon:'💰', lang:true, history:[]},
+  upsc:   {agent:'General Studies',   icon:'📜', lang:true, history:[]},
+  jee:    {agent:'Physics Tutor',     icon:'⚛️', lang:true, history:[]},
+  school: {agent:'NCERT Doubt Solver',icon:'📚', lang:true, history:[]}
 };
-const P={
-  sme:l=>"You are an expert AI assistant for Indian SME business owners. Help with GST, taxes, MSME schemes, Udyam, GeM portal, legal compliance, digital marketing. "+(l?'Reply in Hinglish (casual Hindi+English mix). Use bullet points for steps.':'Reply in clear English.')+" Keep responses under 220 words.",
-  upsc:l=>"You are an expert UPSC/IAS coaching AI. Cover GS1-GS4, Essay, Current Affairs. "+(l?'Answer in Hindi or English based on question language.':'Answer in English.')+" Give structured exam-focused answers. For MCQs give 4 options with explanation.",
-  jee:l=>"You are an expert JEE/NEET coaching AI covering Physics, Chemistry, Maths and Biology. "+(l?'Explain in Hinglish.':'Reply in English.')+" Always show step-by-step solutions. Highlight key formulas and shortcuts.",
-  school:l=>"You are a friendly AI tutor for Indian school students Class 6-12, CBSE and ICSE. "+(l?'Explain in simple Hinglish. Be encouraging.':'Reply in simple English.')+" Follow NCERT syllabus. Keep responses age-appropriate."
-};
+function getPrompt(m,l){
+  var p={
+    sme:'You are an expert AI assistant for Indian SME business owners. Help with GST, taxes, MSME schemes, Udyam, GeM portal, legal compliance, digital marketing. '+(l?'Reply in Hinglish casual Hindi plus English mix. Use bullet points for steps.':'Reply in clear English.')+' Keep responses under 220 words.',
+    upsc:'You are an expert UPSC IAS coaching AI. Cover GS1 to GS4, Essay, Current Affairs. '+(l?'Answer in Hindi or English based on question language.':'Answer in English.')+' Give structured exam-focused answers. For MCQs give 4 options with explanation.',
+    jee:'You are an expert JEE NEET coaching AI covering Physics Chemistry Maths and Biology. '+(l?'Explain in Hinglish.':'Reply in English.')+' Always show step-by-step solutions. Highlight key formulas and shortcuts.',
+    school:'You are a friendly AI tutor for Indian school students Class 6 to 12 CBSE and ICSE. '+(l?'Explain in simple Hinglish. Be encouraging.':'Reply in simple English.')+' Follow NCERT syllabus. Keep responses age-appropriate.'
+  };
+  return p[m];
+}
 function switchMode(m,btn){
-  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.mbtn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('show'));
+  document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('show');});
   document.getElementById(m).classList.add('show');
 }
 function selAgent(m,name,icon,el){
-  el.closest('.agent-grid').querySelectorAll('.acard').forEach(c=>c.classList.remove('active'));
+  el.closest('.agent-grid').querySelectorAll('.acard').forEach(function(c){c.classList.remove('active');});
   el.classList.add('active');
-  S[m].agent=name;S[m].icon=icon;S[m].history=[];
-  document.getElementById(m+'-title').textContent=icon+' '+name;
-  document.getElementById('chat-'+m).innerHTML='<div class="msg bot"><div class="mav">'+icon+'</div><div class="mbubble">Namaste! I am your <strong>'+name+'</strong>. How can I help you today? 🙏</div></div>';
+  S[m].agent=name; S[m].icon=icon; S[m].history=[];
+  document.getElementById(m+'-title').textContent=name;
+  document.getElementById('chat-'+m).innerHTML='<div class="msg bot"><div class="mav">'+icon+'</div><div class="mbubble">Namaste! I am your <strong>'+name+'</strong>. How can I help you today?</div></div>';
 }
 function toggleLang(m){
   S[m].lang=!S[m].lang;
-  const b=document.getElementById('lang-'+m);
-  b.textContent=S[m].lang?'🇮🇳 Hinglish':'🔤 English';
+  var b=document.getElementById('lang-'+m);
+  b.textContent=S[m].lang?'Hinglish':'English';
   b.classList.toggle('active',S[m].lang);
 }
 function qs(m,t){document.getElementById('inp-'+m).value=t;send(m);}
 function addMsg(m,role,html){
-  const c=document.getElementById('chat-'+m);
-  const d=document.createElement('div');
+  var c=document.getElementById('chat-'+m);
+  var d=document.createElement('div');
   d.className='msg '+role;
   d.innerHTML='<div class="mav">'+(role==='bot'?S[m].icon:'👤')+'</div><div class="mbubble">'+html+'</div>';
   c.appendChild(d);c.scrollTop=c.scrollHeight;
 }
 function addTyping(m){
-  const c=document.getElementById('chat-'+m);
-  const d=document.createElement('div');
+  var c=document.getElementById('chat-'+m);
+  var d=document.createElement('div');
   d.className='msg bot';d.id='typ-'+m;
   d.innerHTML='<div class="mav">'+S[m].icon+'</div><div class="mbubble"><span class="typing"><span></span><span></span><span></span></span></div>';
   c.appendChild(d);c.scrollTop=c.scrollHeight;
 }
+function formatReply(text){
+  text=text.split('\n\n').join('<br><br>');
+  text=text.split('\n').join('<br>');
+  return text;
+}
 async function send(m){
-  const inp=document.getElementById('inp-'+m);
-  const txt=inp.value.trim();if(!txt)return;
+  var inp=document.getElementById('inp-'+m);
+  var txt=inp.value.trim();
+  if(!txt)return;
   inp.value='';
   addMsg(m,'user',txt);
   addTyping(m);
   S[m].history.push({role:'user',content:txt});
   try{
-    const r=await fetch('/api/chat',{
+    var r=await fetch('/api/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:P[m](S[m].lang),messages:S[m].history})
+      body:JSON.stringify({system:getPrompt(m,S[m].lang),messages:S[m].history})
     });
-    const data=await r.json();
-    const reply=(data.content||[]).map(b=>b.text||'').join('').trim();
-    document.getElementById('typ-'+m)?.remove();
+    var data=await r.json();
+    var reply='';
+    if(data.content){
+      for(var i=0;i<data.content.length;i++){
+        if(data.content[i].text)reply+=data.content[i].text;
+      }
+    }
+    reply=reply.trim();
+    var el=document.getElementById('typ-'+m);
+    if(el)el.remove();
     if(reply){
       S[m].history.push({role:'assistant',content:reply});
-      addMsg(m,'bot',reply.replace(/
-
-/g,'<br><br>').replace(/
-/g,'<br>').replace(/**(.*?)**/g,'<strong>$1</strong>'));
+      addMsg(m,'bot',formatReply(reply));
+    }else{
+      addMsg(m,'bot','Sorry, kuch error aaya. Please try again.');
     }
   }catch(e){
-    document.getElementById('typ-'+m)?.remove();
-    addMsg(m,'bot','Sorry, connection error. Please try again. 🙏');
+    var el2=document.getElementById('typ-'+m);
+    if(el2)el2.remove();
+    addMsg(m,'bot','Sorry, connection error. Please try again.');
   }
 }
 </script>
