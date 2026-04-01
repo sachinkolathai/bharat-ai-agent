@@ -3,537 +3,456 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bharat AI Agent — Smart Help for Every Indian</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Bharat AI Agent — Smart AI for Every Indian</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--pink:#FF6B9D;--purple:#A855F7;--blue:#3B82F6;--green:#10B981;--bg:#FFF8F0;--card:#fff;--text:#1a1a2e;--muted:#6b7280;--border:#f0e6ff}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-.hero{background:linear-gradient(135deg,#667eea 0%,#764ba2 40%,#f093fb 100%);padding:0 16px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 60%);animation:shimmer 4s ease-in-out infinite}
-@keyframes shimmer{0%,100%{transform:translate(0,0)}50%{transform:translate(2%,2%)}}
-.hero-inner{max-width:860px;margin:0 auto;padding:28px 0 24px;position:relative;z-index:1}
-.hero-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-.logo-wrap{display:flex;align-items:center;gap:10px}
-.logo-flag{display:flex;flex-direction:column;gap:3px}
-.logo-flag span{width:24px;height:6px;border-radius:2px;display:block}
-.logo-name{font-family:'Baloo 2',sans-serif;font-size:20px;font-weight:800;color:#fff;line-height:1.1}
-.logo-tag{font-size:11px;color:rgba(255,255,255,0.7)}
-.hero-badge{background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:5px 14px;font-size:12px;color:#fff;font-weight:600}
-.hero-body{text-align:center;padding:8px 0 20px}
-.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(26px,5vw,42px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:10px}
-.hero-title .wave{display:inline-block;animation:wave 1.5s ease-in-out infinite}
-@keyframes wave{0%,100%{transform:rotate(0deg)}25%{transform:rotate(15deg)}75%{transform:rotate(-10deg)}}
-.hero-sub{font-size:15px;color:rgba(255,255,255,0.85);margin-bottom:20px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto}
-.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-.hero-pill{background:rgba(255,255,255,0.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:6px 14px;font-size:12px;color:#fff;font-weight:600;animation:popIn .5s ease backwards}
-@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
-.hero-pill:nth-child(1){animation-delay:.1s}
-.hero-pill:nth-child(2){animation-delay:.2s}
-.hero-pill:nth-child(3){animation-delay:.3s}
-.hero-pill:nth-child(4){animation-delay:.4s}
-.features{background:#fff;padding:20px 16px;border-bottom:2px solid #f5f0ff}
-.features-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:600px){.features-inner{grid-template-columns:repeat(4,1fr)}}
-.feat{display:flex;align-items:flex-start;gap:10px;padding:12px;background:#faf8ff;border-radius:14px;border:1.5px solid #f0e6ff;transition:transform .2s}
-.feat:hover{transform:translateY(-2px)}
-.feat-ico{font-size:24px;flex-shrink:0}
-.feat-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
-.feat-desc{font-size:11px;color:var(--muted);line-height:1.4}
-.mode-bar{background:#fff;padding:14px 16px;border-bottom:2px solid #f5f0ff;position:sticky;top:0;z-index:50}
-.mode-inner{max-width:860px;margin:0 auto;display:flex;gap:8px;overflow-x:auto}
-.mode-inner::-webkit-scrollbar{display:none}
-.mbtn{padding:9px 18px;border-radius:24px;border:2px solid #e5e7eb;background:#fff;color:var(--muted);font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .2s}
-.mbtn:hover{border-color:#a78bfa;color:#7c3aed;background:#faf8ff}
-.mbtn.active{border-color:transparent;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,0.15)}
-.mbtn[data-mode="sme"].active{background:linear-gradient(135deg,#f093fb,#f5576c)}
-.mbtn[data-mode="upsc"].active{background:linear-gradient(135deg,#4facfe,#00f2fe)}
-.mbtn[data-mode="jee"].active{background:linear-gradient(135deg,#43e97b,#38f9d7)}
-.mbtn[data-mode="school"].active{background:linear-gradient(135deg,#fa709a,#fee140)}
-.main{max-width:860px;margin:0 auto;padding:20px 16px}
+:root{--text:#0a0a1a;--muted:#4a5568;--purple:#6C3BFF;--saffron:#FF6B00;--bg:#fafafa}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,250,250,0.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-flag{display:flex;flex-direction:column;gap:3px}
+.nav-flag span{width:22px;height:5px;border-radius:2px;display:block}
+.nav-brand{font-family:'Baloo 2',sans-serif;font-size:18px;font-weight:800;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--purple);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;box-shadow:0 2px 8px rgba(108,59,255,0.3)}
+.nav-cta:hover{background:#5a2ee0;transform:translateY(-1px)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:0;right:0;width:65%;height:100%;z-index:0;overflow:hidden}
+.hero-bg svg{width:100%;height:100%}
+.hero-content{position:relative;z-index:1;max-width:640px}
+.hero-eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:24px}
+.hero-eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--saffron)}
+.hero-eyebrow-text{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.hero-title{font-family:'Baloo 2',sans-serif;font-size:clamp(36px,5.5vw,70px);font-weight:800;color:var(--text);line-height:1.08;margin-bottom:12px;letter-spacing:-1.5px}
+.hero-title .color-1{color:#6C3BFF}
+.hero-title .color-2{color:#FF6B00}
+.hero-sub{font-size:clamp(15px,1.8vw,20px);color:var(--muted);line-height:1.65;margin-bottom:36px;max-width:520px;font-weight:500}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:48px}
+.btn-primary{background:var(--purple);color:#fff;border:none;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s;box-shadow:0 4px 16px rgba(108,59,255,0.3)}
+.btn-primary:hover{background:#5a2ee0;transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,59,255,0.4)}
+.btn-secondary{background:transparent;color:var(--text);border:1.5px solid rgba(0,0,0,0.15);padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s}
+.btn-secondary:hover{border-color:var(--purple);color:var(--purple);background:#f5f0ff}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+.stat-item{display:flex;flex-direction:column;gap:3px}
+.stat-num{font-family:'Baloo 2',sans-serif;font-size:28px;font-weight:800;color:var(--text)}
+.stat-label{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.trust{padding:20px 5%;border-top:1px solid rgba(0,0,0,0.06);border-bottom:1px solid rgba(0,0,0,0.06);background:#fff}
+.trust-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center}
+.trust-label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.trust-divider{width:1px;height:20px;background:rgba(0,0,0,0.1)}
+.trust-items{display:flex;gap:32px;flex-wrap:wrap;align-items:center;justify-content:center}
+.trust-item{font-size:15px;font-weight:700;color:#aaa}
+.features{padding:100px 5%;background:#fff}
+.features-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:12px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.section-title{font-family:'Baloo 2',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:800;color:var(--text);line-height:1.15;margin-bottom:16px;letter-spacing:-1px}
+.section-sub{font-size:17px;color:var(--muted);line-height:1.6;max-width:560px;margin-bottom:60px;font-weight:500}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.feat-card{padding:32px;border-radius:16px;border:1.5px solid rgba(0,0,0,0.06);background:#fafafa;transition:all .25s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;opacity:0;transition:opacity .25s}
+.feat-card:nth-child(1)::before{background:linear-gradient(90deg,#6C3BFF,#a855f7)}
+.feat-card:nth-child(2)::before{background:linear-gradient(90deg,#FF6B00,#f59e0b)}
+.feat-card:nth-child(3)::before{background:linear-gradient(90deg,#10b981,#06b6d4)}
+.feat-card:nth-child(4)::before{background:linear-gradient(90deg,#f43f5e,#ec4899)}
+.feat-card:hover{border-color:transparent;box-shadow:0 12px 40px rgba(0,0,0,0.1);transform:translateY(-4px)}
+.feat-card:hover::before{opacity:1}
+.feat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.feat-card:nth-child(1) .feat-icon{background:#f0ebff}
+.feat-card:nth-child(2) .feat-icon{background:#fff3e0}
+.feat-card:nth-child(3) .feat-icon{background:#e0fdf4}
+.feat-card:nth-child(4) .feat-icon{background:#fff0f3}
+.feat-title{font-family:'Baloo 2',sans-serif;font-size:19px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.feat-desc{font-size:14px;color:var(--muted);line-height:1.7;font-weight:500}
+.modes{padding:100px 5%;background:var(--bg)}
+.modes-inner{max-width:1100px;margin:0 auto}
+.modes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:60px}
+.mode-card{border-radius:20px;padding:32px;color:#fff;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.mode-card::after{content:'→';position:absolute;bottom:24px;right:24px;font-size:20px;font-weight:700;opacity:0;transition:all .25s;transform:translateX(-8px)}
+.mode-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.2)}
+.mode-card:hover::after{opacity:1;transform:translateX(0)}
+.mode-card.sme{background:linear-gradient(135deg,#6C3BFF,#a855f7)}
+.mode-card.upsc{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}
+.mode-card.jee{background:linear-gradient(135deg,#10b981,#059669)}
+.mode-card.school{background:linear-gradient(135deg,#f43f5e,#FF6B00)}
+.mode-ico{font-size:36px;margin-bottom:16px;display:block}
+.mode-title{font-family:'Baloo 2',sans-serif;font-size:22px;font-weight:800;margin-bottom:8px}
+.mode-desc{font-size:13px;opacity:0.85;line-height:1.6;font-weight:500}
+.mode-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.mode-tag{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,0.2);font-weight:700}
+.chat-section{padding:100px 5%;background:#fff}
+.chat-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.chat-inner{grid-template-columns:1fr}}
+.chat-bullets{display:flex;flex-direction:column;gap:16px;margin-bottom:36px}
+.chat-bullet{display:flex;align-items:flex-start;gap:12px}
+.bullet-dot{width:22px;height:22px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:11px;color:#fff;font-weight:700}
+.bullet-text{font-size:15px;color:var(--muted);line-height:1.5;font-weight:500}
+.bullet-text strong{color:var(--text)}
+.chat-demo{background:#fafafa;border-radius:24px;border:1.5px solid rgba(0,0,0,0.07);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.08)}
+.demo-header{padding:14px 18px;background:#fff;border-bottom:1px solid rgba(0,0,0,0.06);display:flex;align-items:center;gap:10px}
+.demo-dots{display:flex;gap:6px}
+.demo-dot{width:10px;height:10px;border-radius:50%}
+.demo-title{font-size:13px;font-weight:700;color:var(--muted);flex:1;text-align:center}
+.demo-lang{display:flex;gap:4px}
+.demo-lang-pill{font-size:10px;padding:3px 9px;border-radius:10px;font-weight:700;border:1.5px solid}
+.demo-lang-pill.active{background:var(--purple);color:#fff;border-color:var(--purple)}
+.demo-lang-pill:not(.active){color:var(--muted);border-color:rgba(0,0,0,0.12);background:#fff}
+.demo-messages{padding:20px;display:flex;flex-direction:column;gap:14px;min-height:280px;background:#fafafa}
+.demo-msg{display:flex;gap:10px;align-items:flex-end}
+.demo-msg.user{flex-direction:row-reverse}
+.demo-av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:#fff;border:1.5px solid rgba(0,0,0,0.08)}
+.demo-bubble{max-width:80%;padding:11px 14px;border-radius:16px;font-size:13px;line-height:1.6;font-weight:500}
+.demo-msg.bot .demo-bubble{background:#fff;color:var(--text);border-radius:4px 16px 16px 16px;border:1.5px solid rgba(0,0,0,0.07);box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.demo-msg.user .demo-bubble{background:var(--purple);color:#fff;border-radius:16px 4px 16px 16px}
+.demo-input-row{padding:14px 16px;background:#fff;border-top:1px solid rgba(0,0,0,0.06);display:flex;gap:10px;align-items:center}
+.demo-input{flex:1;padding:10px 14px;border-radius:20px;border:1.5px solid rgba(0,0,0,0.1);background:#fafafa;font-size:13px;color:var(--text);outline:none;font-family:'Nunito',sans-serif}
+.demo-input:focus{border-color:var(--purple)}
+.demo-send{width:38px;height:38px;border-radius:50%;background:var(--purple);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.demo-send svg{fill:#fff}
+.lang-section{padding:80px 5%;background:linear-gradient(135deg,#0a0a1a 0%,#1a0a3a 100%);position:relative;overflow:hidden}
+.lang-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(108,59,255,0.3),transparent 70%)}
+.lang-section::after{content:'';position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,0,0.2),transparent 70%)}
+.lang-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;text-align:center}
+.lang-section .section-label{color:#a78bfa}
+.lang-section .section-title{color:#fff;margin-bottom:12px}
+.lang-section .section-sub{color:rgba(255,255,255,0.65);margin:0 auto 56px;max-width:520px}
+.lang-cards{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.lang-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:32px 28px;width:220px;text-align:center;transition:all .25s;backdrop-filter:blur(8px)}
+.lang-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.25);transform:translateY(-4px)}
+.lang-card-ico{font-size:36px;margin-bottom:16px;display:block}
+.lang-card-title{font-family:'Baloo 2',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.lang-card-desc{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;font-weight:500}
+.cta-section{padding:100px 5%;background:var(--bg)}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center}
+.cta-section .section-title{margin-bottom:16px}
+.cta-section .section-sub{margin:0 auto 36px}
+.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.chat-app{padding:80px 5%;background:#fff;display:none}
+.chat-app.visible{display:block}
+.chat-app-inner{max-width:860px;margin:0 auto}
+.mode-tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:24px;padding-bottom:4px}
+.mode-tabs::-webkit-scrollbar{display:none}
+.mtab{padding:9px 20px;border-radius:24px;border:1.5px solid rgba(0,0,0,0.1);background:#fff;color:var(--muted);font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s}
+.mtab:hover{border-color:var(--purple);color:var(--purple)}
+.mtab.active{background:var(--purple);color:#fff;border-color:var(--purple);box-shadow:0 4px 14px rgba(108,59,255,0.3)}
 .sec{display:none}
 .sec.show{display:block}
-.sec-header{margin-bottom:16px;padding:16px 20px;border-radius:20px;color:#fff;display:flex;align-items:center;gap:14px}
-.sec-header.sme{background:linear-gradient(135deg,#f093fb,#f5576c)}
-.sec-header.upsc{background:linear-gradient(135deg,#4facfe,#00f2fe)}
-.sec-header.jee{background:linear-gradient(135deg,#43e97b,#38f9d7)}
-.sec-header.school{background:linear-gradient(135deg,#fa709a,#fee140)}
-.sec-header-ico{font-size:36px}
-.sec-header-title{font-family:'Baloo 2',sans-serif;font-size:20px;font-weight:800;margin-bottom:2px}
-.sec-header-sub{font-size:13px;opacity:0.9;line-height:1.4}
-.agent-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+.agent-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
 @media(min-width:500px){.agent-grid{grid-template-columns:repeat(4,1fr)}}
-.acard{background:#fff;border:2px solid #f0e6ff;border-radius:16px;padding:14px 10px;cursor:pointer;transition:all .2s;text-align:center;position:relative;overflow:hidden}
-.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f093fb,#f5576c);opacity:0;transition:opacity .2s}
-.acard:hover{border-color:#c4b5fd;transform:translateY(-2px);box-shadow:0 8px 20px rgba(139,92,246,0.15)}
-.acard:hover::before,.acard.active::before{opacity:1}
-.acard.active{border-color:#7c3aed;box-shadow:0 8px 24px rgba(124,58,237,0.2)}
-.aemoji{font-size:28px;display:block;margin-bottom:6px}
+.acard{background:#fafafa;border:1.5px solid rgba(0,0,0,0.07);border-radius:14px;padding:16px 12px;cursor:pointer;transition:all .2s;text-align:center}
+.acard:hover{border-color:var(--purple);background:#f5f0ff;transform:translateY(-2px)}
+.acard.active{border-color:var(--purple);background:#f5f0ff;box-shadow:0 4px 16px rgba(108,59,255,0.15)}
+.aemoji{font-size:26px;display:block;margin-bottom:6px}
 .aname{font-family:'Baloo 2',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
 .adesc{font-size:11px;color:var(--muted);line-height:1.3}
-.chat-card{background:#fff;border:2px solid #f0e6ff;border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(139,92,246,0.1)}
-.chat-top{padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:2px solid #f5f0ff;flex-wrap:wrap;gap:8px}
-.chat-top.sme{background:linear-gradient(135deg,rgba(240,147,251,0.1),rgba(245,87,108,0.05))}
-.chat-top.upsc{background:linear-gradient(135deg,rgba(79,172,254,0.1),rgba(0,242,254,0.05))}
-.chat-top.jee{background:linear-gradient(135deg,rgba(67,233,123,0.1),rgba(56,249,215,0.05))}
-.chat-top.school{background:linear-gradient(135deg,rgba(250,112,154,0.1),rgba(254,225,64,0.05))}
-.online-dot{width:9px;height:9px;border-radius:50%;background:#10b981;flex-shrink:0;box-shadow:0 0 0 3px rgba(16,185,129,0.2);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,0.2)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0.1)}}
-.atitle{font-family:'Baloo 2',sans-serif;font-size:15px;font-weight:700;flex:1;color:var(--text);min-width:120px}
-.lang-select{font-size:12px;padding:5px 10px;border-radius:12px;border:2px solid #e0d0ff;background:#fff;cursor:pointer;color:#7c3aed;font-weight:700;font-family:'Nunito',sans-serif;outline:none;transition:all .2s}
-.lang-select:focus{border-color:#7c3aed}
-.messages{height:360px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;scroll-behavior:smooth;background:#fdfbff}
-.messages::-webkit-scrollbar{width:4px}
-.messages::-webkit-scrollbar-thumb{background:#e0d0ff;border-radius:4px}
-.msg{display:flex;gap:10px;align-items:flex-end;animation:msgIn .3s ease}
-@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-card{background:#fff;border:1.5px solid rgba(0,0,0,0.07);border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.07)}
+.chat-top{padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(0,0,0,0.06);background:#fafafa;flex-wrap:wrap}
+.online-dot{width:8px;height:8px;border-radius:50%;background:#10b981;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,0.2)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0.08)}}
+.atitle{font-family:'Baloo 2',sans-serif;font-size:14px;font-weight:700;flex:1;color:var(--text);min-width:100px}
+.lang-select{font-size:12px;padding:5px 10px;border-radius:8px;border:1.5px solid rgba(0,0,0,0.1);background:#fff;cursor:pointer;color:var(--purple);font-weight:700;font-family:'Nunito',sans-serif;outline:none}
+.messages{height:340px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;background:#fafafa}
+.messages::-webkit-scrollbar{width:3px}
+.messages::-webkit-scrollbar-thumb{background:rgba(0,0,0,0.1);border-radius:3px}
+.msg{display:flex;gap:8px;align-items:flex-end;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .msg.user{flex-direction:row-reverse}
-.mav{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:2px solid #f0e6ff;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-.mbubble{max-width:80%;padding:12px 16px;border-radius:18px;font-size:14px;line-height:1.7}
-.msg.bot .mbubble{background:#fff;color:var(--text);border-radius:4px 18px 18px 18px;border:1.5px solid #f0e6ff;box-shadow:0 2px 12px rgba(139,92,246,0.08)}
-.msg.user .mbubble{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:18px 4px 18px 18px;box-shadow:0 4px 14px rgba(102,126,234,0.3)}
-.msg-actions{display:flex;gap:6px;margin-top:8px}
-.pdf-btn{font-size:11px;padding:4px 12px;border-radius:10px;border:1.5px solid #e0d0ff;background:#faf8ff;color:#7c3aed;cursor:pointer;font-weight:600;transition:all .2s}
-.pdf-btn:hover{background:#7c3aed;color:#fff}
-.typing span{display:inline-block;width:7px;height:7px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;margin:0 2px;animation:bop 1.1s infinite}
+.mav{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;border:1.5px solid rgba(0,0,0,0.08);background:#fff}
+.mbubble{max-width:80%;padding:11px 15px;border-radius:16px;font-size:14px;line-height:1.65;font-weight:500}
+.msg.bot .mbubble{background:#fff;color:var(--text);border-radius:4px 16px 16px 16px;border:1.5px solid rgba(0,0,0,0.07);box-shadow:0 2px 8px rgba(0,0,0,0.05)}
+.msg.user .mbubble{background:var(--purple);color:#fff;border-radius:16px 4px 16px 16px}
+.msg-actions{margin-top:8px}
+.pdf-btn{font-size:11px;padding:4px 12px;border-radius:8px;border:1.5px solid rgba(0,0,0,0.1);background:#fafafa;color:var(--purple);cursor:pointer;font-weight:700;transition:all .2s}
+.pdf-btn:hover{background:var(--purple);color:#fff}
+.typing span{display:inline-block;width:6px;height:6px;background:var(--purple);border-radius:50%;margin:0 2px;animation:bop 1.1s infinite;opacity:0.5}
 .typing span:nth-child(2){animation-delay:.18s}
 .typing span:nth-child(3){animation-delay:.36s}
-@keyframes bop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-.qrow{padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;border-top:2px solid #f5f0ff;background:#fdfbff}
-.qp{font-size:12px;padding:6px 14px;border-radius:16px;border:1.5px solid #e0d0ff;background:#fff;color:#7c3aed;cursor:pointer;font-weight:600;transition:all .2s;white-space:nowrap}
-.qp:hover{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-color:transparent;transform:translateY(-1px)}
-.pdf-bar{padding:10px 16px;background:linear-gradient(135deg,rgba(102,126,234,0.05),rgba(118,75,162,0.05));border-top:2px solid #f0e6ff;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.pdf-bar-label{font-size:12px;font-weight:700;color:#7c3aed}
-.ptbtn{font-size:12px;padding:5px 14px;border-radius:12px;border:1.5px solid #c4b5fd;background:#fff;color:#7c3aed;cursor:pointer;font-weight:600;transition:all .2s}
-.ptbtn:hover{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-color:transparent}
-.ptbtn.green{border-color:#6ee7b7;color:#059669}
-.ptbtn.green:hover{background:linear-gradient(135deg,#43e97b,#38f9d7);color:#fff;border-color:transparent}
-.irow{padding:12px 16px;display:flex;gap:10px;align-items:center;background:#fff;border-top:2px solid #f5f0ff}
-.cinput{flex:1;padding:12px 18px;border-radius:24px;border:2px solid #e0d0ff;background:#fdfbff;color:var(--text);font-size:14px;outline:none;font-family:'Nunito',sans-serif;transition:all .2s}
-.cinput:focus{border-color:#7c3aed;background:#fff;box-shadow:0 0 0 4px rgba(124,58,237,0.08)}
-.cinput::placeholder{color:#c4b5fd}
-.sbtn{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;box-shadow:0 4px 12px rgba(102,126,234,0.3)}
+@keyframes bop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.qrow{padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid rgba(0,0,0,0.06);background:#fafafa}
+.qp{font-size:12px;padding:6px 14px;border-radius:20px;border:1.5px solid rgba(0,0,0,0.09);background:#fff;color:var(--muted);cursor:pointer;font-weight:600;transition:all .2s;white-space:nowrap}
+.qp:hover{border-color:var(--purple);color:var(--purple);background:#f5f0ff}
+.pdf-bar{padding:10px 16px;background:#f5f0ff;border-top:1px solid rgba(108,59,255,0.1);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pdf-bar-label{font-size:12px;font-weight:700;color:var(--purple)}
+.ptbtn{font-size:12px;padding:5px 14px;border-radius:8px;border:1.5px solid rgba(108,59,255,0.25);background:#fff;color:var(--purple);cursor:pointer;font-weight:700;transition:all .2s}
+.ptbtn:hover{background:var(--purple);color:#fff}
+.ptbtn.green{border-color:rgba(16,185,129,0.3);color:#059669}
+.ptbtn.green:hover{background:#059669;color:#fff}
+.irow{padding:12px 16px;display:flex;gap:10px;align-items:center;background:#fff;border-top:1px solid rgba(0,0,0,0.06)}
+.cinput{flex:1;padding:11px 16px;border-radius:20px;border:1.5px solid rgba(0,0,0,0.1);background:#fafafa;color:var(--text);font-size:14px;outline:none;font-family:'Nunito',sans-serif;transition:all .2s}
+.cinput:focus{border-color:var(--purple);background:#fff;box-shadow:0 0 0 3px rgba(108,59,255,0.08)}
+.cinput::placeholder{color:#aaa}
+.sbtn{width:42px;height:42px;border-radius:50%;background:var(--purple);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;box-shadow:0 3px 10px rgba(108,59,255,0.3)}
 .sbtn:hover{transform:scale(1.08)}
 .sbtn svg{fill:#fff}
-.hint{font-size:11px;color:#c4b5fd;text-align:center;padding:5px;font-weight:600}
-.footer{text-align:center;padding:24px;font-size:13px;color:var(--muted);border-top:2px solid #f5f0ff;margin-top:24px;font-weight:600}
-.footer a{color:#7c3aed;text-decoration:none}
-.footer-hearts{color:#FF6B9D}
+.hint{font-size:11px;color:#aaa;text-align:center;padding:5px;font-weight:600}
+footer{padding:40px 5%;background:#0a0a1a;color:rgba(255,255,255,0.4);font-size:13px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer .footer-brand{font-family:'Baloo 2',sans-serif;font-size:16px;font-weight:800;color:#fff}
+footer a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color .2s}
+footer a:hover{color:#fff}
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-top">
-      <div class="logo-wrap">
-        <div class="logo-flag">
-          <span style="background:#FF9933"></span>
-          <span style="background:#fff"></span>
-          <span style="background:#138808"></span>
-        </div>
-        <div>
-          <div class="logo-name">Bharat AI Agent</div>
-          <div class="logo-tag">Powered by Claude AI</div>
-        </div>
-      </div>
-      <div class="hero-badge">Made for India</div>
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-flag">
+      <span style="background:#FF9933"></span>
+      <span style="background:#eee"></span>
+      <span style="background:#138808"></span>
     </div>
-    <div class="hero-body">
-      <div class="hero-title">Your Smart AI Friend <span class="wave">👋</span><br>for Every Indian!</div>
-      <div class="hero-sub">GST filing se lekar UPSC preparation tak, JEE doubts se lekar school homework tak — sab kuch FREE mein, Hindi aur English dono mein!</div>
-      <div class="hero-pills">
-        <div class="hero-pill">💼 Business Help</div>
-        <div class="hero-pill">📜 UPSC Coaching</div>
-        <div class="hero-pill">⚛️ JEE / NEET</div>
-        <div class="hero-pill">📚 School Tutor</div>
-      </div>
+    <span class="nav-brand">Bharat AI</span>
+  </div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#modes">Modes</a>
+    <a href="#languages">Languages</a>
+  </div>
+  <button class="nav-cta" onclick="openApp()">Try Free →</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg">
+    <svg viewBox="0 0 800 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="g1" cx="60%" cy="30%" r="60%"><stop offset="0%" stop-color="#a78bfa" stop-opacity="0.7"/><stop offset="100%" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+        <radialGradient id="g2" cx="80%" cy="70%" r="50%"><stop offset="0%" stop-color="#fb923c" stop-opacity="0.6"/><stop offset="100%" stop-color="#fb923c" stop-opacity="0"/></radialGradient>
+        <radialGradient id="g3" cx="40%" cy="80%" r="40%"><stop offset="0%" stop-color="#34d399" stop-opacity="0.4"/><stop offset="100%" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+        <radialGradient id="g4" cx="90%" cy="20%" r="35%"><stop offset="0%" stop-color="#f472b6" stop-opacity="0.5"/><stop offset="100%" stop-color="#f472b6" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="800" height="700" fill="#f8f6ff"/>
+      <rect width="800" height="700" fill="url(#g1)"/>
+      <rect width="800" height="700" fill="url(#g2)"/>
+      <rect width="800" height="700" fill="url(#g3)"/>
+      <rect width="800" height="700" fill="url(#g4)"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      <span class="hero-eyebrow-text">Powered by Claude AI &nbsp;·&nbsp; Made for India</span>
+    </div>
+    <h1 class="hero-title">Smart AI help<br>for <span class="color-1">every</span><br><span class="color-2">Indian.</span></h1>
+    <p class="hero-sub">GST filing to UPSC coaching, JEE prep to school homework — get expert AI answers in Hindi, English, or Hinglish. Free.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openApp()">Start for free →</button>
+      <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Learn more</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">AI Agents</span></div>
+      <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Languages</span></div>
+      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Free</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-inner">
+    <span class="trust-label">Helping Indians with</span>
+    <div class="trust-divider"></div>
+    <div class="trust-items">
+      <span class="trust-item">GST Returns</span>
+      <span class="trust-item">UPSC Prep</span>
+      <span class="trust-item">JEE / NEET</span>
+      <span class="trust-item">MSME Loans</span>
+      <span class="trust-item">NCERT Doubts</span>
+      <span class="trust-item">PDF Notes</span>
+      <span class="trust-item">Hindi Essays</span>
     </div>
   </div>
 </div>
 
-<div class="features">
+<section class="features" id="features">
   <div class="features-inner">
-    <div class="feat"><span class="feat-ico">🤖</span><div><div class="feat-title">Live AI Answers</div><div class="feat-desc">Real answers powered by Claude AI — not pre-stored data!</div></div></div>
-    <div class="feat"><span class="feat-ico">🇮🇳</span><div><div class="feat-title">3 Languages</div><div class="feat-desc">Choose English, Hindi, or Hinglish — aapki marzi!</div></div></div>
-    <div class="feat"><span class="feat-ico">📄</span><div><div class="feat-title">PDF Download</div><div class="feat-desc">Save any answer or notes as a PDF instantly!</div></div></div>
-    <div class="feat"><span class="feat-ico">✅</span><div><div class="feat-title">100% Free</div><div class="feat-desc">No login, no signup, no hidden charges. Free hai!</div></div></div>
+    <div class="section-label">Why Bharat AI</div>
+    <h2 class="section-title">Built for Bharat.<br>Not for Silicon Valley.</h2>
+    <p class="section-sub">Every feature is designed keeping Indian users in mind — from GST rules to UPSC syllabus, in the language you prefer.</p>
+    <div class="features-grid">
+      <div class="feat-card"><div class="feat-icon">🤖</div><div class="feat-title">Live Claude AI</div><div class="feat-desc">Every answer is generated fresh by Claude AI — not pre-stored. Real expert answers every single time.</div></div>
+      <div class="feat-card"><div class="feat-icon">🇮🇳</div><div class="feat-title">3 Language Support</div><div class="feat-desc">Ask in pure Hindi, English, or Hinglish. Switch languages anytime. India speaks many ways — so does Bharat AI.</div></div>
+      <div class="feat-card"><div class="feat-icon">📄</div><div class="feat-title">PDF Downloads</div><div class="feat-desc">Save any answer as PDF instantly. Generate full study notes, formula sheets, GST guides, and tax invoices.</div></div>
+      <div class="feat-card"><div class="feat-icon">✅</div><div class="feat-title">Always Free</div><div class="feat-desc">No login required. No hidden charges. No subscription needed to start. Just open and ask your question.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="modes" id="modes">
+  <div class="modes-inner">
+    <div class="section-label">AI Agents</div>
+    <h2 class="section-title">One platform.<br>Four expert agents.</h2>
+    <p class="section-sub">Each agent is trained with India-specific knowledge — GST rules, UPSC syllabus, NCERT curriculum, and MSME schemes.</p>
+    <div class="modes-grid">
+      <div class="mode-card sme" onclick="openApp('sme')"><span class="mode-ico">💼</span><div class="mode-title">SME / Business</div><div class="mode-desc">GST filing, MSME loans, Udyam registration, GeM portal, legal compliance, digital marketing guidance.</div><div class="mode-tags"><span class="mode-tag">GST Returns</span><span class="mode-tag">MSME Loans</span><span class="mode-tag">Invoices</span></div></div>
+      <div class="mode-card upsc" onclick="openApp('upsc')"><span class="mode-ico">📜</span><div class="mode-title">UPSC / IAS</div><div class="mode-desc">GS1 to GS4 concepts, Current Affairs, Essay writing, MCQ practice. Personal IAS tutor anytime.</div><div class="mode-tags"><span class="mode-tag">GS Papers</span><span class="mode-tag">MCQ Practice</span><span class="mode-tag">Notes PDF</span></div></div>
+      <div class="mode-card jee" onclick="openApp('jee')"><span class="mode-ico">⚛️</span><div class="mode-title">JEE / NEET</div><div class="mode-desc">Physics numericals, Chemistry reactions, Maths step-by-step, Biology for NEET. Full solutions every time.</div><div class="mode-tags"><span class="mode-tag">Step-by-step</span><span class="mode-tag">Formulas</span><span class="mode-tag">Solutions</span></div></div>
+      <div class="mode-card school" onclick="openApp('school')"><span class="mode-ico">📚</span><div class="mode-title">School / CBSE</div><div class="mode-desc">NCERT doubts Class 6-12, board exam prep, career guidance after 10th and 12th, Hindi nibandh writing.</div><div class="mode-tags"><span class="mode-tag">NCERT</span><span class="mode-tag">Board Exam</span><span class="mode-tag">Career Help</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="chat-section">
+  <div class="chat-inner">
+    <div class="chat-info">
+      <div class="section-label">See it in action</div>
+      <h2 class="section-title">Ask anything.<br>Get expert answers.</h2>
+      <p class="section-sub">Bharat AI gives specific, structured, easy-to-read answers — not generic responses.</p>
+      <div class="chat-bullets">
+        <div class="chat-bullet"><div class="bullet-dot">✓</div><div class="bullet-text"><strong>Structured answers</strong> — clear headings, numbered steps, easy to follow</div></div>
+        <div class="chat-bullet"><div class="bullet-dot">✓</div><div class="bullet-text"><strong>India-specific</strong> — GST rules, UPSC syllabus, NCERT curriculum</div></div>
+        <div class="chat-bullet"><div class="bullet-dot">✓</div><div class="bullet-text"><strong>Save as PDF</strong> — download any answer for offline use</div></div>
+      </div>
+      <button class="btn-primary" onclick="openApp()">Try it yourself →</button>
+    </div>
+    <div class="chat-demo">
+      <div class="demo-header">
+        <div class="demo-dots"><div class="demo-dot" style="background:#ff5f57"></div><div class="demo-dot" style="background:#febc2e"></div><div class="demo-dot" style="background:#28c840"></div></div>
+        <span class="demo-title">Bharat AI Agent</span>
+        <div class="demo-lang"><span class="demo-lang-pill active">Hinglish</span><span class="demo-lang-pill">Hindi</span><span class="demo-lang-pill">English</span></div>
+      </div>
+      <div class="demo-messages">
+        <div class="demo-msg bot"><div class="demo-av">📜</div><div class="demo-bubble">Namaste! Main aapka UPSC tutor hoon. Koi bhi topic poochho!</div></div>
+        <div class="demo-msg user"><div class="demo-av">👤</div><div class="demo-bubble">Explain Article 370 for UPSC</div></div>
+        <div class="demo-msg bot"><div class="demo-av">📜</div><div class="demo-bubble"><strong>ARTICLE 370 — KEY POINTS FOR UPSC:</strong><br><br>1. Article 370 gave Jammu and Kashmir special autonomous status<br>2. J&K had its own Constitution and flag<br>3. Parliament could only legislate on Defence, Foreign Affairs and Communications<br>4. August 5, 2019 — President's Order revoked Article 370<br>5. J&K was divided into two Union Territories: J&K and Ladakh</div></div>
+      </div>
+      <div class="demo-input-row">
+        <input class="demo-input" placeholder="Ask your question...">
+        <button class="demo-send" onclick="openApp('upsc')"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lang-section" id="languages">
+  <div class="lang-inner">
+    <div class="section-label">Language Support</div>
+    <h2 class="section-title">India ki apni bhasha mein.</h2>
+    <p class="section-sub">Switch between languages anytime. Bharat AI understands and responds in all three — perfectly.</p>
+    <div class="lang-cards">
+      <div class="lang-card"><span class="lang-card-ico">🔤</span><div class="lang-card-title">English</div><div class="lang-card-desc">Clear structured English answers — perfect for professional use and formal study.</div></div>
+      <div class="lang-card"><span class="lang-card-ico">🔵</span><div class="lang-card-title">Hindi</div><div class="lang-card-desc">Pure Hindi mein jawab — Hindi medium students aur business owners ke liye perfect.</div></div>
+      <div class="lang-card"><span class="lang-card-ico">🇮🇳</span><div class="lang-card-title">Hinglish</div><div class="lang-card-desc">Hindi aur English ka perfect mix — jaise dost se baat karo. Most natural way!</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">Get started</div>
+    <h2 class="section-title">Ready to try<br>Bharat AI?</h2>
+    <p class="section-sub">No signup. No payment. Just open and ask your first question — in any language.</p>
+    <div class="cta-actions">
+      <button class="btn-primary" onclick="openApp()">Start for free →</button>
+      <button class="btn-secondary" onclick="openApp('upsc')">Try UPSC agent</button>
+    </div>
+  </div>
+</section>
+
+<div class="chat-app" id="chat-app">
+  <div class="chat-app-inner">
+    <h2 style="font-family:'Baloo 2',sans-serif;font-size:28px;font-weight:800;margin-bottom:8px;color:var(--text)">Bharat AI Agent</h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:500">Select a mode and start asking your questions</p>
+    <div class="mode-tabs">
+      <button class="mtab active" data-mode="sme" onclick="switchMode('sme',this)">💼 SME / Business</button>
+      <button class="mtab" data-mode="upsc" onclick="switchMode('upsc',this)">📜 UPSC / IAS</button>
+      <button class="mtab" data-mode="jee" onclick="switchMode('jee',this)">⚛️ JEE / NEET</button>
+      <button class="mtab" data-mode="school" onclick="switchMode('school',this)">📚 School / CBSE</button>
+    </div>
+
+    <div id="sme" class="sec show">
+      <div class="agent-grid">
+        <div class="acard active" onclick="selAgent('sme','GST and Tax Helper','💰',this)"><span class="aemoji">💰</span><div class="aname">GST and Tax</div><div class="adesc">Filing, ITR, TDS</div></div>
+        <div class="acard" onclick="selAgent('sme','Business Advisor','🏭',this)"><span class="aemoji">🏭</span><div class="aname">Business Advisor</div><div class="adesc">MSME, loans, Udyam</div></div>
+        <div class="acard" onclick="selAgent('sme','Legal and Compliance','⚖️',this)"><span class="aemoji">⚖️</span><div class="aname">Legal Help</div><div class="adesc">ROC, Shop Act, FSSAI</div></div>
+        <div class="acard" onclick="selAgent('sme','Digital Marketing','📣',this)"><span class="aemoji">📣</span><div class="aname">Digital Marketing</div><div class="adesc">Social, WhatsApp</div></div>
+      </div>
+      <div class="chat-card">
+        <div class="chat-top"><div class="online-dot"></div><span class="atitle" id="sme-title">💰 GST and Tax Helper</span><select class="lang-select" id="lang-sme" onchange="setLang('sme',this.value)"><option value="hinglish">🇮🇳 Hinglish</option><option value="hindi">🔵 Hindi</option><option value="english">🔤 English</option></select></div>
+        <div class="messages" id="chat-sme"><div class="msg bot"><div class="mav">💰</div><div class="mbubble"><strong>Namaste! Main aapka GST and Tax Helper hoon!</strong><br><br>Main help kar sakta hoon:<br>- GST return filing step by step<br>- ITR aur TDS guidance<br>- MSME loans aur schemes<br>- Business registration help<br><br>Apna sawaal poochho — bilkul free hai!</div></div></div>
+        <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('sme')">Chat PDF</button><button class="ptbtn green" onclick="generateNotesPDF('sme')">GST Notes PDF</button><button class="ptbtn green" onclick="generateInvoicePDF()">Invoice PDF</button></div>
+        <div class="qrow"><button class="qp" onclick="qs('sme','GST return kaise file kare step by step')">GST return file kare?</button><button class="qp" onclick="qs('sme','MSME loan ke liye documents kya chahiye')">MSME loan</button><button class="qp" onclick="qs('sme','Composition scheme kya hai')">Composition scheme</button><button class="qp" onclick="qs('sme','GeM portal pe seller kaise bane')">GeM portal</button></div>
+        <div class="irow"><input class="cinput" id="inp-sme" placeholder="Apna sawaal yahan likho..." onkeydown="if(event.key==='Enter')send('sme')"><button class="sbtn" onclick="send('sme')"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
+        <p class="hint">English · Hindi · Hinglish — aapki marzi</p>
+      </div>
+    </div>
+
+    <div id="upsc" class="sec">
+      <div class="agent-grid">
+        <div class="acard active" onclick="selAgent('upsc','General Studies Tutor','📜',this)"><span class="aemoji">📜</span><div class="aname">General Studies</div><div class="adesc">Polity, Economy, History</div></div>
+        <div class="acard" onclick="selAgent('upsc','Current Affairs Expert','📰',this)"><span class="aemoji">📰</span><div class="aname">Current Affairs</div><div class="adesc">News for UPSC</div></div>
+        <div class="acard" onclick="selAgent('upsc','Essay Writing Coach','✍️',this)"><span class="aemoji">✍️</span><div class="aname">Essay Writing</div><div class="adesc">UPSC answer format</div></div>
+        <div class="acard" onclick="selAgent('upsc','MCQ Quiz Master','🎯',this)"><span class="aemoji">🎯</span><div class="aname">Mock Quiz</div><div class="adesc">Prelims MCQ practice</div></div>
+      </div>
+      <div class="chat-card">
+        <div class="chat-top"><div class="online-dot"></div><span class="atitle" id="upsc-title">📜 General Studies Tutor</span><select class="lang-select" id="lang-upsc" onchange="setLang('upsc',this.value)"><option value="hinglish">🇮🇳 Hinglish</option><option value="hindi">🔵 Hindi</option><option value="english">🔤 English</option></select></div>
+        <div class="messages" id="chat-upsc"><div class="msg bot"><div class="mav">📜</div><div class="mbubble"><strong>Welcome, future IAS Officer!</strong><br><br>Main aapka UPSC tutor hoon:<br>- GS1, GS2, GS3, GS4 concepts<br>- Current Affairs analysis<br>- Essay and answer writing<br>- Prelims MCQ practice<br><br>Koi bhi topic poochho!</div></div></div>
+        <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('upsc')">Chat PDF</button><button class="ptbtn green" onclick="generateNotesPDF('upsc')">Study Notes PDF</button></div>
+        <div class="qrow"><button class="qp" onclick="qs('upsc','Article 370 kya tha UPSC ke liye explain karo')">Article 370</button><button class="qp" onclick="qs('upsc','Indian Economy ke 5 MCQ do UPSC Prelims ke liye')">Economy MCQs</button><button class="qp" onclick="qs('upsc','Climate change par 200 word UPSC answer likho')">Answer writing</button><button class="qp" onclick="qs('upsc','2024 important government schemes UPSC ke liye')">Govt schemes</button></div>
+        <div class="irow"><input class="cinput" id="inp-upsc" placeholder="UPSC topic ya MCQ poochho..." onkeydown="if(event.key==='Enter')send('upsc')"><button class="sbtn" onclick="send('upsc')"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
+        <p class="hint">English · Hindi · Hinglish — aapki marzi</p>
+      </div>
+    </div>
+
+    <div id="jee" class="sec">
+      <div class="agent-grid">
+        <div class="acard active" onclick="selAgent('jee','Physics Expert','⚛️',this)"><span class="aemoji">⚛️</span><div class="aname">Physics</div><div class="adesc">Numericals, concepts</div></div>
+        <div class="acard" onclick="selAgent('jee','Chemistry Tutor','🧪',this)"><span class="aemoji">🧪</span><div class="aname">Chemistry</div><div class="adesc">Reactions, organic</div></div>
+        <div class="acard" onclick="selAgent('jee','Maths Solver','📐',this)"><span class="aemoji">📐</span><div class="aname">Mathematics</div><div class="adesc">Calculus, algebra</div></div>
+        <div class="acard" onclick="selAgent('jee','Biology Guide','🌿',this)"><span class="aemoji">🌿</span><div class="aname">Biology</div><div class="adesc">NEET-focused</div></div>
+      </div>
+      <div class="chat-card">
+        <div class="chat-top"><div class="online-dot"></div><span class="atitle" id="jee-title">⚛️ Physics Expert</span><select class="lang-select" id="lang-jee" onchange="setLang('jee',this.value)"><option value="hinglish">🇮🇳 Hinglish</option><option value="hindi">🔵 Hindi</option><option value="english">🔤 English</option></select></div>
+        <div class="messages" id="chat-jee"><div class="msg bot"><div class="mav">⚛️</div><div class="mbubble"><strong>Hello future Engineer or Doctor!</strong><br><br>Main aapka JEE/NEET tutor hoon:<br>- Step-by-step numerical solutions<br>- Important formulas and shortcuts<br>- Concept clarity with examples<br><br>Koi bhi problem bhejo!</div></div></div>
+        <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('jee')">Solution PDF</button><button class="ptbtn green" onclick="generateNotesPDF('jee')">Formula Sheet PDF</button></div>
+        <div class="qrow"><button class="qp" onclick="qs('jee','Ball at 20ms 45 degrees find range max height full solution')">Projectile motion</button><button class="qp" onclick="qs('jee','Kirchhoff laws with solved example')">Kirchhoff laws</button><button class="qp" onclick="qs('jee','JEE Mains Physics important formulas chapter wise')">Formula list</button><button class="qp" onclick="qs('jee','Integration x square 0 to 3 step by step')">Integration</button></div>
+        <div class="irow"><input class="cinput" id="inp-jee" placeholder="Problem paste karo ya concept poochho..." onkeydown="if(event.key==='Enter')send('jee')"><button class="sbtn" onclick="send('jee')"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
+        <p class="hint">English · Hindi · Hinglish — aapki marzi</p>
+      </div>
+    </div>
+
+    <div id="school" class="sec">
+      <div class="agent-grid">
+        <div class="acard active" onclick="selAgent('school','NCERT Doubt Solver','📚',this)"><span class="aemoji">📚</span><div class="aname">NCERT Doubts</div><div class="adesc">Class 6-12</div></div>
+        <div class="acard" onclick="selAgent('school','Board Exam Coach','🎓',this)"><span class="aemoji">🎓</span><div class="aname">Board Exam Prep</div><div class="adesc">CBSE/ICSE</div></div>
+        <div class="acard" onclick="selAgent('school','Career Guide','🗺️',this)"><span class="aemoji">🗺️</span><div class="aname">Career Guidance</div><div class="adesc">After 10th and 12th</div></div>
+        <div class="acard" onclick="selAgent('school','Essay Writing Helper','✒️',this)"><span class="aemoji">✒️</span><div class="aname">Essay Writing</div><div class="adesc">Hindi nibandh</div></div>
+      </div>
+      <div class="chat-card">
+        <div class="chat-top"><div class="online-dot"></div><span class="atitle" id="school-title">📚 NCERT Doubt Solver</span><select class="lang-select" id="lang-school" onchange="setLang('school',this.value)"><option value="hinglish">🇮🇳 Hinglish</option><option value="hindi">🔵 Hindi</option><option value="english">🔤 English</option></select></div>
+        <div class="messages" id="chat-school"><div class="msg bot"><div class="mav">📚</div><div class="mbubble"><strong>Hi! Main tumhara school tutor hoon!</strong><br><br>Main help kar sakta hoon:<br>- NCERT Class 6-12 doubts<br>- Board exam questions<br>- Science, Maths, Social Science<br>- Hindi nibandh aur letters<br><br>Koi bhi sawaal poochho!</div></div></div>
+        <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('school')">Chat PDF</button><button class="ptbtn green" onclick="generateNotesPDF('school')">Revision Notes PDF</button></div>
+        <div class="qrow"><button class="qp" onclick="qs('school','Photosynthesis class 10 aasan bhasha mein samjhao')">Photosynthesis</button><button class="qp" onclick="qs('school','French Revolution class 9 complete notes')">French Revolution</button><button class="qp" onclick="qs('school','10th ke baad engineering ke liye konsa stream')">Stream after 10th</button><button class="qp" onclick="qs('school','Swachh Bharat par 300 words Hindi nibandh')">Hindi Nibandh</button></div>
+        <div class="irow"><input class="cinput" id="inp-school" placeholder="Class aur chapter batao, sawaal poochho..." onkeydown="if(event.key==='Enter')send('school')"><button class="sbtn" onclick="send('school')"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
+        <p class="hint">English · Hindi · Hinglish — aapki marzi</p>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="mode-bar">
-  <div class="mode-inner">
-    <button class="mbtn active" data-mode="sme" onclick="switchMode('sme',this)">💼 SME / Business</button>
-    <button class="mbtn" data-mode="upsc" onclick="switchMode('upsc',this)">📜 UPSC / IAS</button>
-    <button class="mbtn" data-mode="jee" onclick="switchMode('jee',this)">⚛️ JEE / NEET</button>
-    <button class="mbtn" data-mode="school" onclick="switchMode('school',this)">📚 School / CBSE</button>
-  </div>
-</div>
-
-<div class="main">
-
-<div id="sme" class="sec show">
-  <div class="sec-header sme">
-    <span class="sec-header-ico">💼</span>
-    <div>
-      <div class="sec-header-title">SME and Business Helper</div>
-      <div class="sec-header-sub">GST filing, MSME loans, legal compliance, digital marketing — sab kuch ek jagah! Apna sawaal poochho aur turant jawab pao.</div>
-    </div>
-  </div>
-  <div class="agent-grid">
-    <div class="acard active" onclick="selAgent('sme','GST and Tax Helper','💰',this)"><span class="aemoji">💰</span><div class="aname">GST and Tax</div><div class="adesc">Filing, ITR, TDS returns</div></div>
-    <div class="acard" onclick="selAgent('sme','Business Advisor','🏭',this)"><span class="aemoji">🏭</span><div class="aname">Business Advisor</div><div class="adesc">MSME, loans, Udyam</div></div>
-    <div class="acard" onclick="selAgent('sme','Legal and Compliance','⚖️',this)"><span class="aemoji">⚖️</span><div class="aname">Legal Help</div><div class="adesc">ROC, Shop Act, FSSAI</div></div>
-    <div class="acard" onclick="selAgent('sme','Digital Marketing','📣',this)"><span class="aemoji">📣</span><div class="aname">Digital Marketing</div><div class="adesc">Social media, WhatsApp</div></div>
-  </div>
-  <div class="chat-card">
-    <div class="chat-top sme">
-      <div class="online-dot"></div>
-      <span class="atitle" id="sme-title">💰 GST and Tax Helper</span>
-      <select class="lang-select" id="lang-sme" onchange="setLang('sme',this.value)">
-        <option value="hinglish">🇮🇳 Hinglish</option>
-        <option value="hindi">🔵 Hindi</option>
-        <option value="english">🔤 English</option>
-      </select>
-    </div>
-    <div class="messages" id="chat-sme">
-      <div class="msg bot"><div class="mav">💰</div><div class="mbubble"><strong>Namaste! Main aapka GST and Tax Helper hoon!</strong><br><br>Main aapki help kar sakta hoon:<br>- GST return filing step by step<br>- ITR aur TDS guidance<br>- MSME loans aur schemes<br>- Business registration help<br><br>Apna sawaal poochho — bilkul free hai! 😊</div></div>
-    </div>
-    <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('sme')">💬 Chat PDF</button><button class="ptbtn green" onclick="generateNotesPDF('sme')">📋 GST Notes PDF</button><button class="ptbtn green" onclick="generateInvoicePDF()">🧾 Invoice PDF</button></div>
-    <div class="qrow">
-      <button class="qp" onclick="qs('sme','GST return kaise file kare step by step batao')">GST return kaise file kare?</button>
-      <button class="qp" onclick="qs('sme','MSME loan ke liye kya karna hoga documents kya chahiye')">MSME loan help</button>
-      <button class="qp" onclick="qs('sme','Composition scheme kya hai aur kaun apply kar sakta hai')">Composition scheme?</button>
-      <button class="qp" onclick="qs('sme','GeM portal pe seller kaise bane step by step')">GeM portal</button>
-    </div>
-    <div class="irow"><input class="cinput" id="inp-sme" placeholder="Apna sawaal yahan likho..." onkeydown="if(event.key==='Enter')send('sme')"><button class="sbtn" onclick="send('sme')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
-    <p class="hint">✨ English · Hindi · Hinglish — aapki marzi!</p>
-  </div>
-</div>
-
-<div id="upsc" class="sec">
-  <div class="sec-header upsc">
-    <span class="sec-header-ico">📜</span>
-    <div>
-      <div class="sec-header-title">UPSC / IAS Coaching</div>
-      <div class="sec-header-sub">GS Papers, Current Affairs, Essay Writing, MCQ Practice — aapka personal IAS tutor! Hindi medium aspirants bhi freely poochh sakte hain.</div>
-    </div>
-  </div>
-  <div class="agent-grid">
-    <div class="acard active" onclick="selAgent('upsc','General Studies Tutor','📜',this)"><span class="aemoji">📜</span><div class="aname">General Studies</div><div class="adesc">Polity, Economy, History</div></div>
-    <div class="acard" onclick="selAgent('upsc','Current Affairs Expert','📰',this)"><span class="aemoji">📰</span><div class="aname">Current Affairs</div><div class="adesc">News analysis for UPSC</div></div>
-    <div class="acard" onclick="selAgent('upsc','Essay Writing Coach','✍️',this)"><span class="aemoji">✍️</span><div class="aname">Essay Writing</div><div class="adesc">UPSC answer format</div></div>
-    <div class="acard" onclick="selAgent('upsc','MCQ Quiz Master','🎯',this)"><span class="aemoji">🎯</span><div class="aname">Mock Quiz</div><div class="adesc">Prelims MCQ practice</div></div>
-  </div>
-  <div class="chat-card">
-    <div class="chat-top upsc">
-      <div class="online-dot"></div>
-      <span class="atitle" id="upsc-title">📜 General Studies Tutor</span>
-      <select class="lang-select" id="lang-upsc" onchange="setLang('upsc',this.value)">
-        <option value="hinglish">🇮🇳 Hinglish</option>
-        <option value="hindi">🔵 Hindi</option>
-        <option value="english">🔤 English</option>
-      </select>
-    </div>
-    <div class="messages" id="chat-upsc">
-      <div class="msg bot"><div class="mav">📜</div><div class="mbubble"><strong>Welcome, future IAS Officer!</strong><br><br>Main aapka personal UPSC tutor hoon:<br>- GS1, GS2, GS3, GS4 concepts<br>- Current Affairs analysis<br>- Essay and answer writing<br>- Prelims MCQ practice<br><br>Koi bhi topic poochho — Hindi ya English mein! 🎯</div></div>
-    </div>
-    <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('upsc')">💬 Chat PDF</button><button class="ptbtn green" onclick="generateNotesPDF('upsc')">📋 Study Notes PDF</button></div>
-    <div class="qrow">
-      <button class="qp" onclick="qs('upsc','Article 370 kya tha aur kyun hataya gaya UPSC ke liye explain karo')">Article 370</button>
-      <button class="qp" onclick="qs('upsc','Indian Economy ke 5 important MCQ do UPSC Prelims ke liye with answers')">Economy MCQs</button>
-      <button class="qp" onclick="qs('upsc','Climate change par 200 word UPSC style answer likho')">Answer writing</button>
-      <button class="qp" onclick="qs('upsc','2024 ke important government schemes UPSC ke liye list karo')">Govt schemes 2024</button>
-    </div>
-    <div class="irow"><input class="cinput" id="inp-upsc" placeholder="UPSC topic, concept ya MCQ poochho..." onkeydown="if(event.key==='Enter')send('upsc')"><button class="sbtn" onclick="send('upsc')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
-    <p class="hint">✨ English · Hindi · Hinglish — aapki marzi!</p>
-  </div>
-</div>
-
-<div id="jee" class="sec">
-  <div class="sec-header jee">
-    <span class="sec-header-ico">⚛️</span>
-    <div>
-      <div class="sec-header-title">JEE / NEET Coaching</div>
-      <div class="sec-header-sub">Physics numericals, Chemistry reactions, Maths problems, Biology concepts — step-by-step solutions with full working. Exam mein top karo!</div>
-    </div>
-  </div>
-  <div class="agent-grid">
-    <div class="acard active" onclick="selAgent('jee','Physics Expert','⚛️',this)"><span class="aemoji">⚛️</span><div class="aname">Physics</div><div class="adesc">Numericals, concepts</div></div>
-    <div class="acard" onclick="selAgent('jee','Chemistry Tutor','🧪',this)"><span class="aemoji">🧪</span><div class="aname">Chemistry</div><div class="adesc">Reactions, organic</div></div>
-    <div class="acard" onclick="selAgent('jee','Maths Solver','📐',this)"><span class="aemoji">📐</span><div class="aname">Mathematics</div><div class="adesc">Calculus, algebra</div></div>
-    <div class="acard" onclick="selAgent('jee','Biology Guide','🌿',this)"><span class="aemoji">🌿</span><div class="aname">Biology</div><div class="adesc">NEET-focused NCERT</div></div>
-  </div>
-  <div class="chat-card">
-    <div class="chat-top jee">
-      <div class="online-dot"></div>
-      <span class="atitle" id="jee-title">⚛️ Physics Expert</span>
-      <select class="lang-select" id="lang-jee" onchange="setLang('jee',this.value)">
-        <option value="hinglish">🇮🇳 Hinglish</option>
-        <option value="hindi">🔵 Hindi</option>
-        <option value="english">🔤 English</option>
-      </select>
-    </div>
-    <div class="messages" id="chat-jee">
-      <div class="msg bot"><div class="mav">⚛️</div><div class="mbubble"><strong>Hello future Engineer or Doctor!</strong><br><br>Main aapka JEE/NEET tutor hoon:<br>- Step-by-step numerical solutions<br>- Important formulas and shortcuts<br>- Concept clarity with examples<br>- Previous year question analysis<br><br>Koi bhi problem bhejo — solve kar deta hoon! 💪</div></div>
-    </div>
-    <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('jee')">💬 Solution PDF</button><button class="ptbtn green" onclick="generateNotesPDF('jee')">📋 Formula Sheet PDF</button></div>
-    <div class="qrow">
-      <button class="qp" onclick="qs('jee','Ball thrown at 20ms at 45 degrees find range max height and time of flight with complete solution')">Projectile motion</button>
-      <button class="qp" onclick="qs('jee','Kirchhoff laws explain karo with solved numerical example')">Kirchhoff laws</button>
-      <button class="qp" onclick="qs('jee','JEE Mains Physics ke sabse important chapters aur formulas list karo')">Important formulas</button>
-      <button class="qp" onclick="qs('jee','Integration of x square from 0 to 3 solve karo step by step')">Integration problem</button>
-    </div>
-    <div class="irow"><input class="cinput" id="inp-jee" placeholder="Problem paste karo ya concept poochho..." onkeydown="if(event.key==='Enter')send('jee')"><button class="sbtn" onclick="send('jee')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
-    <p class="hint">✨ English · Hindi · Hinglish — aapki marzi!</p>
-  </div>
-</div>
-
-<div id="school" class="sec">
-  <div class="sec-header school">
-    <span class="sec-header-ico">📚</span>
-    <div>
-      <div class="sec-header-title">School / CBSE Tutor</div>
-      <div class="sec-header-sub">Class 6 se 12 tak — NCERT doubts, board exam preparation, career guidance aur Hindi nibandh. Aasan bhasha mein samjhaunga!</div>
-    </div>
-  </div>
-  <div class="agent-grid">
-    <div class="acard active" onclick="selAgent('school','NCERT Doubt Solver','📚',this)"><span class="aemoji">📚</span><div class="aname">NCERT Doubts</div><div class="adesc">Class 6-12 all subjects</div></div>
-    <div class="acard" onclick="selAgent('school','Board Exam Coach','🎓',this)"><span class="aemoji">🎓</span><div class="aname">Board Exam Prep</div><div class="adesc">CBSE/ICSE strategy</div></div>
-    <div class="acard" onclick="selAgent('school','Career Guide','🗺️',this)"><span class="aemoji">🗺️</span><div class="aname">Career Guidance</div><div class="adesc">After 10th and 12th</div></div>
-    <div class="acard" onclick="selAgent('school','Essay Writing Helper','✒️',this)"><span class="aemoji">✒️</span><div class="aname">Essay Writing</div><div class="adesc">Hindi nibandh, letters</div></div>
-  </div>
-  <div class="chat-card">
-    <div class="chat-top school">
-      <div class="online-dot"></div>
-      <span class="atitle" id="school-title">📚 NCERT Doubt Solver</span>
-      <select class="lang-select" id="lang-school" onchange="setLang('school',this.value)">
-        <option value="hinglish">🇮🇳 Hinglish</option>
-        <option value="hindi">🔵 Hindi</option>
-        <option value="english">🔤 English</option>
-      </select>
-    </div>
-    <div class="messages" id="chat-school">
-      <div class="msg bot"><div class="mav">📚</div><div class="mbubble"><strong>Hi! Main tumhara school tutor hoon!</strong><br><br>Main help kar sakta hoon:<br>- NCERT Class 6-12 doubts<br>- Board exam important questions<br>- Science, Maths, Social Science<br>- Hindi nibandh aur letters<br><br>Koi bhi sawaal poochho — aasan bhasha mein samjhaunga! 🌟</div></div>
-    </div>
-    <div class="pdf-bar"><span class="pdf-bar-label">📄 PDF:</span><button class="ptbtn" onclick="downloadChatPDF('school')">💬 Chat PDF</button><button class="ptbtn green" onclick="generateNotesPDF('school')">📋 Revision Notes PDF</button></div>
-    <div class="qrow">
-      <button class="qp" onclick="qs('school','Photosynthesis kya hota hai class 10 ke liye aasan bhasha mein samjhao')">Photosynthesis</button>
-      <button class="qp" onclick="qs('school','French Revolution ke main causes kya the class 9 complete notes')">French Revolution</button>
-      <button class="qp" onclick="qs('school','10th ke baad engineering ke liye konsa stream lena chahiye')">Stream after 10th</button>
-      <button class="qp" onclick="qs('school','Swachh Bharat Abhiyan par 300 words ka nibandh likho')">Hindi Nibandh</button>
-    </div>
-    <div class="irow"><input class="cinput" id="inp-school" placeholder="Class aur chapter batao, sawaal poochho..." onkeydown="if(event.key==='Enter')send('school')"><button class="sbtn" onclick="send('school')"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2z"/></svg></button></div>
-    <p class="hint">✨ English · Hindi · Hinglish — aapki marzi!</p>
-  </div>
-</div>
-
-</div>
-<div class="footer">Made with <span class="footer-hearts">♥</span> for India &nbsp;·&nbsp; Powered by Claude AI &nbsp;·&nbsp; <a href="https://wa.me/91XXXXXXXXXX">WhatsApp Support</a></div>
+<footer>
+  <span class="footer-brand">Bharat AI</span>
+  <span>Made with love for India &nbsp;·&nbsp; Powered by Claude AI</span>
+  <a href="https://wa.me/91XXXXXXXXXX">WhatsApp Support</a>
+</footer>
 
 <script>
-var S={
-  sme:   {agent:'GST and Tax Helper',   icon:'💰', lang:'hinglish', history:[]},
-  upsc:  {agent:'General Studies Tutor',icon:'📜', lang:'hinglish', history:[]},
-  jee:   {agent:'Physics Expert',       icon:'⚛️', lang:'hinglish', history:[]},
-  school:{agent:'NCERT Doubt Solver',   icon:'📚', lang:'hinglish', history:[]}
-};
-
-function getPrompt(m){
-  var p={
-    sme:'You are an expert AI assistant for Indian SME business owners. Help with GST, taxes, MSME schemes, Udyam, GeM portal, legal compliance, digital marketing. Give practical India-specific advice with numbered steps. Keep under 280 words.',
-    upsc:'You are an expert UPSC IAS coaching AI. Cover GS1 to GS4, Essay, Current Affairs. Give structured exam-focused answers. For MCQs give 4 options with correct answer explanation. Be encouraging.',
-    jee:'You are an expert JEE NEET coaching AI covering Physics Chemistry Maths and Biology. ALWAYS show complete step-by-step solutions with formulas clearly labeled and units mentioned. Give shortcuts and tricks.',
-    school:'You are a warm friendly AI tutor for Indian school students Class 6 to 12 CBSE and ICSE. Follow NCERT syllabus. Break down complex topics into simple parts. Be very encouraging and supportive.'
-  };
-  return p[m];
-}
-
+var S={sme:{agent:'GST and Tax Helper',icon:'💰',lang:'hinglish',history:[]},upsc:{agent:'General Studies Tutor',icon:'📜',lang:'hinglish',history:[]},jee:{agent:'Physics Expert',icon:'⚛️',lang:'hinglish',history:[]},school:{agent:'NCERT Doubt Solver',icon:'📚',lang:'hinglish',history:[]}};
+function getPrompt(m){var p={sme:'You are an expert AI assistant for Indian SME business owners. Help with GST, taxes, MSME schemes, Udyam, GeM portal, legal compliance, digital marketing. Give practical India-specific advice. Keep under 280 words.',upsc:'You are an expert UPSC IAS coaching AI. Cover GS1 to GS4, Essay, Current Affairs. Give structured exam-focused answers. For MCQs give 4 options with correct answer. Be encouraging.',jee:'You are an expert JEE NEET coaching AI covering Physics Chemistry Maths and Biology. ALWAYS show complete step-by-step solutions with formulas clearly labeled and units. Give shortcuts.',school:'You are a warm friendly AI tutor for Indian school students Class 6 to 12 CBSE and ICSE. Follow NCERT syllabus. Break complex topics into simple parts. Be very encouraging.'};return p[m];}
+function openApp(mode){var app=document.getElementById('chat-app');app.classList.add('visible');app.scrollIntoView({behavior:'smooth'});if(mode){var btn=document.querySelector('.mtab[data-mode="'+mode+'"]');if(btn)switchMode(mode,btn);}}
 function setLang(m,val){S[m].lang=val;}
-
-function switchMode(m,btn){
-  document.querySelectorAll('.mbtn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('show');});
-  document.getElementById(m).classList.add('show');
-}
-
-function selAgent(m,name,icon,el){
-  el.closest('.agent-grid').querySelectorAll('.acard').forEach(function(c){c.classList.remove('active');});
-  el.classList.add('active');
-  S[m].agent=name; S[m].icon=icon; S[m].history=[];
-  document.getElementById(m+'-title').textContent=icon+' '+name;
-  document.getElementById('chat-'+m).innerHTML='<div class="msg bot"><div class="mav">'+icon+'</div><div class="mbubble"><strong>Namaste! Main aapka '+name+' hoon!</strong><br><br>Aaj main aapki kya help kar sakta hoon? Apna sawaal poochho — bilkul free hai!</div></div>';
-}
-
+function switchMode(m,btn){document.querySelectorAll('.mtab').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');document.querySelectorAll('.sec').forEach(function(s){s.classList.remove('show');});document.getElementById(m).classList.add('show');}
+function selAgent(m,name,icon,el){el.closest('.agent-grid').querySelectorAll('.acard').forEach(function(c){c.classList.remove('active');});el.classList.add('active');S[m].agent=name;S[m].icon=icon;S[m].history=[];document.getElementById(m+'-title').textContent=icon+' '+name;document.getElementById('chat-'+m).innerHTML='<div class="msg bot"><div class="mav">'+icon+'</div><div class="mbubble"><strong>Namaste! Main aapka '+name+' hoon!</strong><br><br>Aaj kya help chahiye? Bilkul free hai!</div></div>';}
 function qs(m,t){document.getElementById('inp-'+m).value=t;send(m);}
-
-function addMsg(m,role,html,rawText){
-  var c=document.getElementById('chat-'+m);
-  var d=document.createElement('div');
-  d.className='msg '+role;
-  if(role==='bot'&&rawText){
-    d.setAttribute('data-text',rawText);
-    d.innerHTML='<div class="mav">'+S[m].icon+'</div><div class="mbubble">'+html+'<div class="msg-actions"><button class="pdf-btn" onclick="downloadMsgPDF(this)">📄 Save as PDF</button></div></div>';
-  }else{
-    d.innerHTML='<div class="mav">'+(role==='bot'?S[m].icon:'👤')+'</div><div class="mbubble">'+html+'</div>';
-  }
-  c.appendChild(d); c.scrollTop=c.scrollHeight;
-}
-
-function addTyping(m){
-  var c=document.getElementById('chat-'+m);
-  var d=document.createElement('div');
-  d.className='msg bot'; d.id='typ-'+m;
-  d.innerHTML='<div class="mav">'+S[m].icon+'</div><div class="mbubble"><span class="typing"><span></span><span></span><span></span></span></div>';
-  c.appendChild(d); c.scrollTop=c.scrollHeight;
-}
-
-function formatReply(text){
-  text=text.split('\n\n').join('<br><br>');
-  text=text.split('\n').join('<br>');
-  return text;
-}
-
-async function send(m){
-  var inp=document.getElementById('inp-'+m);
-  var txt=inp.value.trim();
-  if(!txt)return;
-  inp.value='';
-  addMsg(m,'user',txt,null);
-  addTyping(m);
-  S[m].history.push({role:'user',content:txt});
-  try{
-    var r=await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({system:getPrompt(m), messages:S[m].history, language:S[m].lang})
-    });
-    var data=await r.json();
-    var reply='';
-    if(data.content){for(var i=0;i<data.content.length;i++){if(data.content[i].text)reply+=data.content[i].text;}}
-    reply=reply.trim();
-    var el=document.getElementById('typ-'+m);
-    if(el)el.remove();
-    if(reply){
-      S[m].history.push({role:'assistant',content:reply});
-      addMsg(m,'bot',formatReply(reply),reply);
-    }else{
-      addMsg(m,'bot','Sorry, kuch error aaya. Please try again!',null);
-    }
-  }catch(e){
-    var el2=document.getElementById('typ-'+m);
-    if(el2)el2.remove();
-    addMsg(m,'bot','Sorry, connection error. Please try again!',null);
-  }
-}
-
-function makePDF(title,content,filename){
-  var doc=new window.jspdf.jsPDF();
-  doc.setFillColor(102,126,234); doc.rect(0,0,210,22,'F');
-  doc.setFillColor(118,75,162); doc.rect(70,0,140,22,'F');
-  doc.setTextColor(255,255,255); doc.setFontSize(14);
-  doc.text('Bharat AI Agent',10,14);
-  doc.setFontSize(9); doc.text('Powered by Claude AI | Made for India',120,14);
-  doc.setFillColor(255,107,157); doc.rect(0,22,210,2,'F');
-  doc.setTextColor(30,30,60); doc.setFontSize(16); doc.text(title,10,37);
-  doc.setFontSize(9); doc.setTextColor(120,120,140);
-  doc.text('Generated: '+new Date().toLocaleDateString('en-IN')+' | bharat-ai-agent.vercel.app',10,45);
-  doc.setDrawColor(200,180,255); doc.line(10,48,200,48);
-  doc.setTextColor(30,30,30); doc.setFontSize(11);
-  var lines=doc.splitTextToSize(content,185);
-  var y=56;
-  for(var i=0;i<lines.length;i++){if(y>275){doc.addPage();y=20;}doc.text(lines[i],10,y);y+=6;}
-  doc.setFontSize(8); doc.setTextColor(160,140,200);
-  doc.text('Made with love for India | Bharat AI Agent | bharat-ai-agent.vercel.app',10,288);
-  doc.save(filename);
-}
-
-function downloadMsgPDF(btn){
-  var msgDiv=btn.closest('.msg');
-  var text=msgDiv.getAttribute('data-text');
-  if(!text)return;
-  makePDF('AI Answer',text,'bharat-ai-answer.pdf');
-}
-
-function downloadChatPDF(m){
-  var msgs=document.getElementById('chat-'+m).querySelectorAll('.msg');
-  var content='CHAT TRANSCRIPT - '+S[m].agent+'\n\n';
-  msgs.forEach(function(msg){
-    var bubble=msg.querySelector('.mbubble');
-    if(!bubble)return;
-    var role=msg.classList.contains('user')?'You':S[m].agent;
-    var text=bubble.innerText.replace('Save as PDF','').trim();
-    if(text)content+=role+':\n'+text+'\n\n---\n\n';
-  });
-  makePDF('Chat - '+S[m].agent,content,'bharat-ai-chat.pdf');
-}
-
-async function generateNotesPDF(m){
-  var topics={
-    sme:'Create detailed GST Notes in simple English covering: GST registration process, types of returns GSTR1 GSTR3B with due dates, composition scheme eligibility, input tax credit rules, important GST rates, penalties for late filing, and tips to avoid common mistakes. Use clear headings and numbered points.',
-    upsc:'Create comprehensive UPSC Study Notes covering: Indian Polity key concepts, Indian Economy important topics, Modern History key events, Geography important facts, Important Government Schemes 2024, Science and Technology developments, Environment topics. Use clear headings and bullet points. Make it exam-focused.',
-    jee:'Create a complete JEE Physics Formula Sheet chapter wise covering: Kinematics, Laws of Motion, Thermodynamics, Electrostatics, Current Electricity, Magnetism, Optics, Modern Physics, Waves. List all key formulas with units clearly.',
-    school:'Create comprehensive NCERT Revision Notes for Class 10 covering: Science topics, Mathematics formulas and concepts, Social Science key points, important definitions. Make it student-friendly with clear headings.'
-  };
-  var titles={sme:'GST Complete Notes',upsc:'UPSC Study Notes',jee:'JEE Formula Sheet',school:'Class 10 Revision Notes'};
-  alert('Generating PDF notes using AI... please wait 15 seconds!');
-  try{
-    var r=await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        system:'You are an expert teacher. Create detailed study notes in plain text only. Use CAPITAL LETTERS for headings followed by colon. Use numbered points and dash bullet points. No markdown symbols at all. Make content comprehensive.',
-        messages:[{role:'user',content:topics[m]}],
-        language:'english'
-      })
-    });
-    var data=await r.json();
-    var content='';
-    if(data.content){for(var i=0;i<data.content.length;i++){if(data.content[i].text)content+=data.content[i].text;}}
-    if(content.trim()){makePDF(titles[m],content.trim(),'bharat-ai-notes.pdf');}
-    else{alert('Could not generate notes. Please try again.');}
-  }catch(e){alert('Error generating PDF. Please check connection.');}
-}
-
-function generateInvoicePDF(){
-  var biz=prompt('Aapka Business Name:'); if(!biz)return;
-  var client=prompt('Client ka Naam:'); if(!client)return;
-  var amount=prompt('Amount (Rs mein):'); if(!amount)return;
-  var gst=prompt('Aapka GST Number (optional):') || 'Not Registered';
-  var doc=new window.jspdf.jsPDF();
-  doc.setFillColor(102,126,234); doc.rect(0,0,210,28,'F');
-  doc.setTextColor(255,255,255); doc.setFontSize(20);
-  doc.text('TAX INVOICE',10,18);
-  doc.setFontSize(9); doc.text('Bharat AI Agent | bharat-ai-agent.vercel.app',110,16);
-  doc.setFillColor(255,107,157); doc.rect(0,28,210,2,'F');
-  doc.setTextColor(30,30,60); doc.setFontSize(15); doc.text(biz,10,45);
-  doc.setFontSize(10); doc.setTextColor(100,100,120);
-  doc.text('GST No: '+gst,10,53);
-  doc.text('Invoice No: INV-'+Date.now().toString().slice(-6),130,45);
-  doc.text('Date: '+new Date().toLocaleDateString('en-IN'),130,53);
-  doc.setDrawColor(200,180,255); doc.line(10,60,200,60);
-  doc.setTextColor(30,30,60); doc.setFontSize(13); doc.text(client,10,72);
-  doc.line(10,78,200,78);
-  doc.setFillColor(240,235,255); doc.rect(10,81,190,10,'F');
-  doc.setFontSize(10); doc.text('Description',14,88); doc.text('Amount',165,88);
-  doc.line(10,91,200,91);
-  doc.setTextColor(30,30,30); doc.text('Services / Products',14,102); doc.text('Rs '+amount,165,102);
-  doc.line(10,107,200,107);
-  var amt=parseFloat(amount)||0;
-  var gstAmt=(amt*0.18).toFixed(2);
-  var total=(amt+parseFloat(gstAmt)).toFixed(2);
-  doc.setTextColor(80,80,80);
-  doc.text('Subtotal',130,118); doc.text('Rs '+amt.toFixed(2),165,118);
-  doc.text('GST @ 18%',130,126); doc.text('Rs '+gstAmt,165,126);
-  doc.setFillColor(102,126,234); doc.rect(115,132,85,14,'F');
-  doc.setTextColor(255,255,255); doc.setFontSize(13);
-  doc.text('TOTAL: Rs '+total,120,142);
-  doc.setTextColor(160,140,200); doc.setFontSize(8);
-  doc.text('Generated by Bharat AI Agent | Made for India',10,288);
-  doc.save('gst-invoice.pdf');
-}
+function addMsg(m,role,html,rawText){var c=document.getElementById('chat-'+m);var d=document.createElement('div');d.className='msg '+role;if(role==='bot'&&rawText){d.setAttribute('data-text',rawText);d.innerHTML='<div class="mav">'+S[m].icon+'</div><div class="mbubble">'+html+'<div class="msg-actions"><button class="pdf-btn" onclick="downloadMsgPDF(this)">📄 Save as PDF</button></div></div>';}else{d.innerHTML='<div class="mav">'+(role==='bot'?S[m].icon:'👤')+'</div><div class="mbubble">'+html+'</div>';}c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function addTyping(m){var c=document.getElementById('chat-'+m);var d=document.createElement('div');d.className='msg bot';d.id='typ-'+m;d.innerHTML='<div class="mav">'+S[m].icon+'</div><div class="mbubble"><span class="typing"><span></span><span></span><span></span></span></div>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function formatReply(text){text=text.split('\n\n').join('<br><br>');text=text.split('\n').join('<br>');return text;}
+async function send(m){var inp=document.getElementById('inp-'+m);var txt=inp.value.trim();if(!txt)return;inp.value='';addMsg(m,'user',txt,null);addTyping(m);S[m].history.push({role:'user',content:txt});try{var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:getPrompt(m),messages:S[m].history,language:S[m].lang})});var data=await r.json();var reply='';if(data.content){for(var i=0;i<data.content.length;i++){if(data.content[i].text)reply+=data.content[i].text;}}reply=reply.trim();var el=document.getElementById('typ-'+m);if(el)el.remove();if(reply){S[m].history.push({role:'assistant',content:reply});addMsg(m,'bot',formatReply(reply),reply);}else{addMsg(m,'bot','Sorry, kuch error aaya. Please try again!',null);}}catch(e){var el2=document.getElementById('typ-'+m);if(el2)el2.remove();addMsg(m,'bot','Sorry, connection error. Please try again!',null);}}
+function makePDF(title,content,filename){var doc=new window.jspdf.jsPDF();doc.setFillColor(108,59,255);doc.rect(0,0,210,22,'F');doc.setTextColor(255,255,255);doc.setFontSize(14);doc.text('Bharat AI Agent',10,14);doc.setFontSize(9);doc.text('Powered by Claude AI | Made for India',120,14);doc.setFillColor(255,107,0);doc.rect(0,22,210,2,'F');doc.setTextColor(10,10,26);doc.setFontSize(16);doc.text(title,10,37);doc.setFontSize(9);doc.setTextColor(100,100,120);doc.text('Generated: '+new Date().toLocaleDateString('en-IN')+' | bharat-ai-agent.vercel.app',10,45);doc.setDrawColor(200,190,255);doc.line(10,48,200,48);doc.setTextColor(30,30,30);doc.setFontSize(11);var lines=doc.splitTextToSize(content,185);var y=56;for(var i=0;i<lines.length;i++){if(y>275){doc.addPage();y=20;}doc.text(lines[i],10,y);y+=6;}doc.setFontSize(8);doc.setTextColor(160,150,200);doc.text('Made with love for India | Bharat AI Agent | bharat-ai-agent.vercel.app',10,288);doc.save(filename);}
+function downloadMsgPDF(btn){var msgDiv=btn.closest('.msg');var text=msgDiv.getAttribute('data-text');if(!text)return;makePDF('AI Answer',text,'bharat-ai-answer.pdf');}
+function downloadChatPDF(m){var msgs=document.getElementById('chat-'+m).querySelectorAll('.msg');var content='CHAT TRANSCRIPT - '+S[m].agent+'\n\n';msgs.forEach(function(msg){var bubble=msg.querySelector('.mbubble');if(!bubble)return;var role=msg.classList.contains('user')?'You':S[m].agent;var text=bubble.innerText.replace('Save as PDF','').trim();if(text)content+=role+':\n'+text+'\n\n---\n\n';});makePDF('Chat - '+S[m].agent,content,'bharat-ai-chat.pdf');}
+async function generateNotesPDF(m){var topics={sme:'Create detailed GST Notes covering: GST registration, types of returns GSTR1 GSTR3B with due dates, composition scheme, input tax credit rules, important GST rates, penalties, tips to avoid mistakes. Use CAPITAL LETTER headings and numbered points.',upsc:'Create UPSC Study Notes covering: Indian Polity, Indian Economy, Modern History, Geography, Important Government Schemes 2024, Science and Technology. Use CAPITAL LETTER headings and bullet points.',jee:'Create JEE Physics Formula Sheet chapter wise: Kinematics, Laws of Motion, Thermodynamics, Electrostatics, Current Electricity, Magnetism, Optics, Modern Physics. List all key formulas with units.',school:'Create NCERT Revision Notes for Class 10 covering: Science, Mathematics, Social Science key points. Use CAPITAL LETTER headings. Make it revision-friendly.'};var titles={sme:'GST Complete Notes',upsc:'UPSC Study Notes',jee:'JEE Formula Sheet',school:'Class 10 Revision Notes'};alert('Generating PDF... please wait 15 seconds!');try{var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:'You are an expert teacher. Create detailed study notes in plain text. Use CAPITAL LETTERS for headings. Use numbered points and dash bullets. No markdown symbols.',messages:[{role:'user',content:topics[m]}],language:'english'})});var data=await r.json();var content='';if(data.content){for(var i=0;i<data.content.length;i++){if(data.content[i].text)content+=data.content[i].text;}}if(content.trim()){makePDF(titles[m],content.trim(),'bharat-ai-notes.pdf');}else{alert('Could not generate. Please try again.');}}catch(e){alert('Error. Please check connection.');}}
+function generateInvoicePDF(){var biz=prompt('Business Name:');if(!biz)return;var client=prompt('Client Name:');if(!client)return;var amount=prompt('Amount (Rs):');if(!amount)return;var gst=prompt('GST Number (optional):') || 'Not Registered';var doc=new window.jspdf.jsPDF();doc.setFillColor(108,59,255);doc.rect(0,0,210,28,'F');doc.setTextColor(255,255,255);doc.setFontSize(20);doc.text('TAX INVOICE',10,18);doc.setFontSize(9);doc.text('Bharat AI | bharat-ai-agent.vercel.app',130,16);doc.setFillColor(255,107,0);doc.rect(0,28,210,2,'F');doc.setTextColor(10,10,26);doc.setFontSize(15);doc.text(biz,10,45);doc.setFontSize(10);doc.setTextColor(100,100,120);doc.text('GST No: '+gst,10,53);doc.text('Invoice No: INV-'+Date.now().toString().slice(-6),130,45);doc.text('Date: '+new Date().toLocaleDateString('en-IN'),130,53);doc.setDrawColor(200,190,255);doc.line(10,60,200,60);doc.setTextColor(10,10,26);doc.setFontSize(13);doc.text(client,10,72);doc.line(10,78,200,78);doc.setFillColor(245,240,255);doc.rect(10,81,190,10,'F');doc.setFontSize(10);doc.text('Description',14,88);doc.text('Amount',165,88);doc.line(10,91,200,91);doc.setTextColor(30,30,30);doc.text('Services / Products',14,102);doc.text('Rs '+amount,165,102);doc.line(10,107,200,107);var amt=parseFloat(amount)||0;var gstAmt=(amt*0.18).toFixed(2);var total=(amt+parseFloat(gstAmt)).toFixed(2);doc.setTextColor(80,80,80);doc.text('Subtotal',130,118);doc.text('Rs '+amt.toFixed(2),165,118);doc.text('GST @ 18%',130,126);doc.text('Rs '+gstAmt,165,126);doc.setFillColor(108,59,255);doc.rect(115,132,85,14,'F');doc.setTextColor(255,255,255);doc.setFontSize(13);doc.text('TOTAL: Rs '+total,120,142);doc.setFontSize(8);doc.setTextColor(160,150,200);doc.text('Generated by Bharat AI | Made for India',10,288);doc.save('gst-invoice.pdf');}
 </script>
 </body>
 </html>
